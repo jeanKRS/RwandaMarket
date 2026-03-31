@@ -2,16 +2,16 @@
   {
     "objectID": "sample_shiny_page.html",
     "href": "sample_shiny_page.html",
-    "title": "Species Occurrence in the US",
+    "title": "Interactive Shiny Demo",
     "section": "",
-    "text": "This document showcases the distribution of various species across the United States. Use the interactive elements below to explore the data."
+    "text": "This document showcases interactive Shiny components running entirely in the browser via shinylive (webR). No server required!"
   },
   {
     "objectID": "sample_shiny_page.html#introduction",
     "href": "sample_shiny_page.html#introduction",
-    "title": "Species Occurrence in the US",
+    "title": "Interactive Shiny Demo",
     "section": "",
-    "text": "This document showcases the distribution of various species across the United States. Use the interactive elements below to explore the data."
+    "text": "This document showcases interactive Shiny components running entirely in the browser via shinylive (webR). No server required!"
   },
   {
     "objectID": "sample_shiny_page.html#leaflet-map",
@@ -37,9 +37,9 @@
   {
     "objectID": "sample_shiny_page.html#conclusion",
     "href": "sample_shiny_page.html#conclusion",
-    "title": "Species Occurrence in the US",
+    "title": "Interactive Shiny Demo",
     "section": "Conclusion",
-    "text": "Conclusion\nThis interactive document demonstrates the power of combining Quarto with Shinylive to create engaging, browser-based data visualizations. The distributed layout allows for a more narrative-driven approach to data exploration."
+    "text": "Conclusion\nThese interactive components demonstrate Shiny apps running directly in your browser using shinylive and webR — no R server needed."
   },
   {
     "objectID": "business-operations-optimization.html",
@@ -1055,5 +1055,19 @@
     "title": "Our Impact",
     "section": "Future Impact Goals",
     "text": "Future Impact Goals\n\nExpand artisan network to [PLACEHOLDER: Number] cooperatives by 2028\nAchieve carbon neutrality in our operations by 2030\nEstablish a vocational training center for traditional crafts in Rwanda\n\nRwandaMarket is committed to growing our business responsibly, ensuring that our success translates into positive outcomes for the communities we serve."
+  },
+  {
+    "objectID": "sample_shiny_page.html#species-selector",
+    "href": "sample_shiny_page.html#species-selector",
+    "title": "Interactive Shiny Demo",
+    "section": "Species Selector",
+    "text": "Species Selector\nSelect a species to see information about it:\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 350\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  selectInput(\"species\", \"Select Species:\",\n              choices = c(\"Species A\", \"Species B\", \"Species C\")),\n  hr(),\n  h4(textOutput(\"species_info\")),\n  tableOutput(\"species_table\")\n)\n\nserver &lt;- function(input, output, session) {\n  species_data &lt;- data.frame(\n    species = c(\"Species A\", \"Species B\", \"Species C\"),\n    lat = c(37.7749, 40.7128, 34.0522),\n    lon = c(-122.4194, -74.0060, -118.2437),\n    count = c(50, 30, 40),\n    region = c(\"West Coast\", \"East Coast\", \"West Coast\")\n  )\n\n  output$species_info &lt;- renderText({\n    paste(\"Showing data for:\", input$species)\n  })\n\n  output$species_table &lt;- renderTable({\n    species_data[species_data$species == input$species, ]\n  })\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "sample_shiny_page.html#historical-data-explorer",
+    "href": "sample_shiny_page.html#historical-data-explorer",
+    "title": "Interactive Shiny Demo",
+    "section": "Historical Data Explorer",
+    "text": "Historical Data Explorer\nUse the slider to select a year and see how observations change:\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 350\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  sliderInput(\"year\", \"Select Year:\", min = 2020, max = 2023, value = 2023, step = 1),\n  hr(),\n  h4(textOutput(\"year_summary\")),\n  plotOutput(\"year_plot\", height = \"200px\")\n)\n\nserver &lt;- function(input, output, session) {\n  yearly_data &lt;- data.frame(\n    year = rep(2020:2023, each = 3),\n    species = rep(c(\"Species A\", \"Species B\", \"Species C\"), 4),\n    count = c(40, 25, 35, 45, 28, 38, 48, 32, 42, 50, 30, 40)\n  )\n\n  output$year_summary &lt;- renderText({\n    yr_data &lt;- yearly_data[yearly_data$year == input$year, ]\n    paste(\"In\", input$year, \"we observed\", sum(yr_data$count),\n          \"total occurrences across all species.\")\n  })\n\n  output$year_plot &lt;- renderPlot({\n    yr_data &lt;- yearly_data[yearly_data$year == input$year, ]\n    barplot(yr_data$count, names.arg = yr_data$species,\n            col = c(\"#2196F3\", \"#4CAF50\", \"#FF9800\"),\n            main = paste(\"Species Counts in\", input$year),\n            ylab = \"Count\", ylim = c(0, 60))\n  })\n}\n\nshinyApp(ui, server)"
   }
 ]

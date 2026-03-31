@@ -1,10 +1,8 @@
 ---
-title: "Species Occurrence in the US"
-format: 
+title: "Interactive Shiny Demo"
+format:
   html:
-    code-fold: true
-    code-summary: "Show the code"
-    resources: 
+    resources:
       - shinylive-sw.js
 filters:
   - shinylive
@@ -12,145 +10,89 @@ filters:
 
 ## Introduction
 
-This document showcases the distribution of various species across the United States. Use the interactive elements below to explore the data.
+This document showcases interactive Shiny components running entirely in the browser via shinylive (webR). No server required!
 
-## Leaflet Map
+## Species Selector
 
-Select a species to view its distribution on the map:
-
-```{shinylive-r}
-#| standalone: true
-#| viewerHeight: 100
-library(shiny)
-
-selectInput("species_leaflet", "Select Species for Leaflet:", 
-            choices = c("Species A", "Species B", "Species C"))
-```
-
-The map below will update based on your selection:
+Select a species to see information about it:
 
 ```{shinylive-r}
 #| standalone: true
-#| viewerHeight: 400
-library(shiny)
-library(leaflet)
+#| viewerHeight: 350
 
-# Sample data (replace with your actual data)
-species_data <- data.frame(
-  species = c("Species A", "Species B", "Species C"),
-  lat = c(37.7749, 40.7128, 34.0522),
-  lon = c(-122.4194, -74.0060, -118.2437),
-  count = c(50, 30, 40)
+library(shiny)
+
+ui <- fluidPage(
+  selectInput("species", "Select Species:",
+              choices = c("Species A", "Species B", "Species C")),
+  hr(),
+  h4(textOutput("species_info")),
+  tableOutput("species_table")
 )
 
-leafletOutput("leaflet_map")
-
 server <- function(input, output, session) {
-  output$leaflet_map <- renderLeaflet({
-    filtered_data <- species_data[species_data$species == input$species_leaflet, ]
-    
-    leaflet() %>%
-      addTiles() %>%
-      addMarkers(
-        data = filtered_data,
-        ~lon, ~lat,
-        popup = ~paste(species, ": ", count)
-      )
+  species_data <- data.frame(
+    species = c("Species A", "Species B", "Species C"),
+    lat = c(37.7749, 40.7128, 34.0522),
+    lon = c(-122.4194, -74.0060, -118.2437),
+    count = c(50, 30, 40),
+    region = c("West Coast", "East Coast", "West Coast")
+  )
+
+  output$species_info <- renderText({
+    paste("Showing data for:", input$species)
+  })
+
+  output$species_table <- renderTable({
+    species_data[species_data$species == input$species, ]
   })
 }
+
+shinyApp(ui, server)
 ```
 
-## Plotly Map
+## Historical Data Explorer
 
-Now, let's look at another visualization using Plotly. Select a species:
+Use the slider to select a year and see how observations change:
 
 ```{shinylive-r}
 #| standalone: true
-#| viewerHeight: 100
+#| viewerHeight: 350
+
 library(shiny)
 
-selectInput("species_plotly", "Select Species for Plotly:", 
-            choices = c("Species A", "Species B", "Species C"))
-```
-
-The Plotly map will update based on your selection:
-
-```{shinylive-r}
-#| standalone: true
-#| viewerHeight: 400
-library(shiny)
-library(plotly)
-
-# Sample data (replace with your actual data)
-species_data <- data.frame(
-  species = c("Species A", "Species B", "Species C"),
-  lat = c(37.7749, 40.7128, 34.0522),
-  lon = c(-122.4194, -74.0060, -118.2437),
-  count = c(50, 30, 40)
+ui <- fluidPage(
+  sliderInput("year", "Select Year:", min = 2020, max = 2023, value = 2023, step = 1),
+  hr(),
+  h4(textOutput("year_summary")),
+  plotOutput("year_plot", height = "200px")
 )
 
-plotlyOutput("plotly_map")
-
 server <- function(input, output, session) {
-  output$plotly_map <- renderPlotly({
-    filtered_data <- species_data[species_data$species == input$species_plotly, ]
-    
-    plot_ly(
-      data = filtered_data,
-      type = 'scattergeo',
-      lon = ~lon,
-      lat = ~lat,
-      text = ~paste(species, ": ", count),
-      marker = list(size = 10)
-    ) %>%
-      layout(
-        geo = list(
-          scope = 'usa',
-          projection = list(type = 'albers usa'),
-          showland = TRUE,
-          landcolor = toRGB("gray95"),
-          countrycolor = toRGB("gray80")
-        )
-      )
+  yearly_data <- data.frame(
+    year = rep(2020:2023, each = 3),
+    species = rep(c("Species A", "Species B", "Species C"), 4),
+    count = c(40, 25, 35, 45, 28, 38, 48, 32, 42, 50, 30, 40)
+  )
+
+  output$year_summary <- renderText({
+    yr_data <- yearly_data[yearly_data$year == input$year, ]
+    paste("In", input$year, "we observed", sum(yr_data$count),
+          "total occurrences across all species.")
+  })
+
+  output$year_plot <- renderPlot({
+    yr_data <- yearly_data[yearly_data$year == input$year, ]
+    barplot(yr_data$count, names.arg = yr_data$species,
+            col = c("#2196F3", "#4CAF50", "#FF9800"),
+            main = paste("Species Counts in", input$year),
+            ylab = "Count", ylim = c(0, 60))
   })
 }
-```
 
-## Historical Data
-
-Use the slider below to select a year and see how the data changes:
-
-```{shinylive-r}
-#| standalone: true
-#| viewerHeight: 100
-library(shiny)
-
-sliderInput("year", "Select Year:", min = 2020, max = 2023, value = 2023)
-```
-
-The text below will update based on your selection:
-
-```{shinylive-r}
-#| standalone: true
-#| viewerHeight: 100
-library(shiny)
-
-# Sample data (replace with your actual data)
-species_data <- data.frame(
-  species = c("Species A", "Species B", "Species C"),
-  count = c(50, 30, 40)
-)
-
-textOutput("dynamic_text")
-
-server <- function(input, output, session) {
-  output$dynamic_text <- renderText({
-    paste("You selected the year", input$year, ". In this year, we observed",
-          sum(species_data$count), "occurrences across all species.")
-  })
-}
+shinyApp(ui, server)
 ```
 
 ## Conclusion
 
-This interactive document demonstrates the power of combining Quarto with Shinylive to create engaging, browser-based data visualizations. The distributed layout allows for a more narrative-driven approach to data exploration.
+These interactive components demonstrate Shiny apps running directly in your browser using shinylive and webR — no R server needed.

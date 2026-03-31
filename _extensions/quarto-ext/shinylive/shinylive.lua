@@ -66,28 +66,46 @@ function callPythonShinylive(args, input)
 end
 
 -- R specific method to call {r-shinylive}
+-- Falls back to a Python-based helper when the R shinylive package is not
+-- installed, since the Python shinylive package ships the same shared web
+-- assets (including webR).
 -- @param args: list of string arguments to pass to r-shinylive
 -- @param input: string to pipe into to r-shinylive
 function callRShinylive(args, input)
-  args = { "-e",
+  -- First, try the native R shinylive package
+  local r_args = { "-e",
     "shinylive:::quarto_ext()",
     table.unpack(args) }
 
-  -- Try calling `pandoc.pipe('Rscript', ...)` and if it fails, print a message
-  -- about installing shinylive R package.
   local res
   local status, err = pcall(
     function()
-      res = pandoc.pipe("Rscript", args, input)
+      res = pandoc.pipe("Rscript", r_args, input)
     end
   )
 
-  if not status then
+  if status then
+    return res
+  end
+
+  -- R shinylive package not available; fall back to the Python-based helper
+  -- that derives R/webR resources from the Python shinylive asset cache.
+  local helperScript = quarto.utils.resolve_path("shinylive-r-helper.py")
+  local helper_args = { helperScript, table.unpack(args) }
+
+  local fallback_status, fallback_err = pcall(
+    function()
+      res = pandoc.pipe("python3", helper_args, input)
+    end
+  )
+
+  if not fallback_status then
     throw_quarto_error(
-      "Error running 'Rscript' command. Perhaps you need to install / update the 'shinylive' R package?",
-      "Error running 'Rscript' command. Perhaps you need to install / update the 'shinylive' R package?\n",
-      "Error:\n",
-      err
+      "Error running shinylive for R. Neither the R 'shinylive' package nor the Python fallback helper could provide assets.\n" ..
+      "Install the R package: install.packages('shinylive')\n" ..
+      "Or install the Python package: pip install shinylive",
+      "R shinylive error:\n", err, "\n",
+      "Python helper error:\n", fallback_err
     )
   end
 
@@ -239,8 +257,10 @@ function compareVersionPart(aPart, bPart)
 end
 
 function ensurePyshinyliveVersion(language)
-  -- Quit early if not python
-  if language ~= "python" then
+  -- Python version check applies to both python and r languages,
+  -- since R blocks fall back to the Python shinylive package when the
+  -- R shinylive package is not installed.
+  if language ~= "python" and language ~= "r" then
     return
   end
   -- Quit early if already completed check
@@ -250,7 +270,8 @@ function ensurePyshinyliveVersion(language)
   hasDoneSetup.python_version = true
 
   -- Verify that min python shinylive version is met
-  pyShinyliveVersion = callShinylive(language, { "--version" }, "", false)
+  -- Always check against the Python shinylive package since R may fall back to it
+  pyShinyliveVersion = callShinylive("python", { "--version" }, "", false)
   -- Remove trailing whitespace
   pyShinyliveVersion = pyShinyliveVersion:gsub("%s+$", "")
   -- Parse version into table
@@ -458,6 +479,13 @@ return {
         el.attr.classes = pandoc.List()
         el.attr.classes:insert("shinylive-r")
       end
+      
+      el.text = 
+        "#| '!! shinylive warning !!': |\n"..
+        "#|   shinylive does not work in self-contained HTML documents.\n" .. 
+        "#|   Please set `embed-resources: false` in your metadata.\n" ..
+        el.text
+      
       return el
     end
   }

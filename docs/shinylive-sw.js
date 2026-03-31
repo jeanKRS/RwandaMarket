@@ -1,11 +1,10 @@
-// Shinylive 0.5.0
-// Copyright 2024 Posit, PBC
-var __require = /* @__PURE__ */ ((x2) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x2, {
-  get: (a2, b) => (typeof require !== "undefined" ? require : a2)[b]
-}) : x2)(function(x2) {
-  if (typeof require !== "undefined")
-    return require.apply(this, arguments);
-  throw Error('Dynamic require of "' + x2 + '" is not supported');
+// Shinylive 0.10.8
+// Copyright 2026 Posit, PBC
+var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+  get: (a, b2) => (typeof require !== "undefined" ? require : a)[b2]
+}) : x)(function(x) {
+  if (typeof require !== "undefined") return require.apply(this, arguments);
+  throw Error('Dynamic require of "' + x + '" is not supported');
 });
 
 // src/assets/shinylive-inject-socket.txt
@@ -23,222 +22,204 @@ function dirname(path) {
 }
 function uint8ArrayToString(buf) {
   let result = "";
-  for (let i = 0; i < buf.length; i++) {
-    result += String.fromCharCode(buf[i]);
+  for (let i2 = 0; i2 < buf.length; i2++) {
+    result += String.fromCharCode(buf[i2]);
   }
   return result;
 }
 
 // node_modules/webr/dist/webr.mjs
-var tn = Object.create;
-var Qr = Object.defineProperty;
-var rn = Object.getOwnPropertyDescriptor;
-var sn = Object.getOwnPropertyNames;
-var nn = Object.getPrototypeOf;
-var on = Object.prototype.hasOwnProperty;
-var N = ((r) => typeof __require < "u" ? __require : typeof Proxy < "u" ? new Proxy(r, { get: (e, t) => (typeof __require < "u" ? __require : e)[t] }) : r)(function(r) {
-  if (typeof __require < "u")
-    return __require.apply(this, arguments);
-  throw new Error('Dynamic require of "' + r + '" is not supported');
+var Rs = Object.create;
+var gr = Object.defineProperty;
+var gs = Object.getOwnPropertyDescriptor;
+var bs = Object.getOwnPropertyNames;
+var ws = Object.getPrototypeOf;
+var xs = Object.prototype.hasOwnProperty;
+var br = (r5) => {
+  throw TypeError(r5);
+};
+var ee = ((r5) => typeof __require < "u" ? __require : typeof Proxy < "u" ? new Proxy(r5, { get: (e, t) => (typeof __require < "u" ? __require : e)[t] }) : r5)(function(r5) {
+  if (typeof __require < "u") return __require.apply(this, arguments);
+  throw Error('Dynamic require of "' + r5 + '" is not supported');
 });
-var S = (r, e) => () => (e || r((e = { exports: {} }).exports, e), e.exports);
-var an = (r, e, t, s) => {
-  if (e && typeof e == "object" || typeof e == "function")
-    for (let n of sn(e))
-      !on.call(r, n) && n !== t && Qr(r, n, { get: () => e[n], enumerable: !(s = rn(e, n)) || s.enumerable });
-  return r;
+var T = (r5, e) => () => (e || r5((e = { exports: {} }).exports, e), e.exports);
+var Es = (r5, e, t, s) => {
+  if (e && typeof e == "object" || typeof e == "function") for (let n of bs(e)) !xs.call(r5, n) && n !== t && gr(r5, n, { get: () => e[n], enumerable: !(s = gs(e, n)) || s.enumerable });
+  return r5;
 };
-var ne = (r, e, t) => (t = r != null ? tn(nn(r)) : {}, an(e || !r || !r.__esModule ? Qr(t, "default", { value: r, enumerable: true }) : t, r));
-var yr = (r, e, t) => {
-  if (!e.has(r))
-    throw TypeError("Cannot " + t);
-};
-var a = (r, e, t) => (yr(r, e, "read from private field"), t ? t.call(r) : e.get(r));
-var u = (r, e, t) => {
-  if (e.has(r))
-    throw TypeError("Cannot add the same private member more than once");
-  e instanceof WeakSet ? e.add(r) : e.set(r, t);
-};
-var d = (r, e, t, s) => (yr(r, e, "write to private field"), s ? s.call(r, t) : e.set(r, t), t);
-var E = (r, e, t) => (yr(r, e, "access private method"), t);
-var Ve = S((U) => {
+var be = (r5, e, t) => (t = r5 != null ? Rs(ws(r5)) : {}, Es(e || !r5 || !r5.__esModule ? gr(t, "default", { value: r5, enumerable: true }) : t, r5));
+var qt = (r5, e, t) => e.has(r5) || br("Cannot " + t);
+var i = (r5, e, t) => (qt(r5, e, "read from private field"), t ? t.call(r5) : e.get(r5));
+var p = (r5, e, t) => e.has(r5) ? br("Cannot add the same private member more than once") : e instanceof WeakSet ? e.add(r5) : e.set(r5, t);
+var M = (r5, e, t) => (qt(r5, e, "access private method"), t);
+var De = T((I) => {
   "use strict";
-  Object.defineProperty(U, "__esModule", { value: true });
-  U.getUint64 = U.getInt64 = U.setInt64 = U.setUint64 = U.UINT32_MAX = void 0;
-  U.UINT32_MAX = 4294967295;
-  function yn(r, e, t) {
+  Object.defineProperty(I, "__esModule", { value: true });
+  I.getUint64 = I.getInt64 = I.setInt64 = I.setUint64 = I.UINT32_MAX = void 0;
+  I.UINT32_MAX = 4294967295;
+  function ks(r5, e, t) {
     let s = t / 4294967296, n = t;
-    r.setUint32(e, s), r.setUint32(e + 4, n);
+    r5.setUint32(e, s), r5.setUint32(e + 4, n);
   }
-  U.setUint64 = yn;
-  function fn(r, e, t) {
+  I.setUint64 = ks;
+  function Ms(r5, e, t) {
     let s = Math.floor(t / 4294967296), n = t;
-    r.setUint32(e, s), r.setUint32(e + 4, n);
+    r5.setUint32(e, s), r5.setUint32(e + 4, n);
   }
-  U.setInt64 = fn;
-  function Rn(r, e) {
-    let t = r.getInt32(e), s = r.getUint32(e + 4);
+  I.setInt64 = Ms;
+  function Ws(r5, e) {
+    let t = r5.getInt32(e), s = r5.getUint32(e + 4);
     return t * 4294967296 + s;
   }
-  U.getInt64 = Rn;
-  function mn(r, e) {
-    let t = r.getUint32(e), s = r.getUint32(e + 4);
+  I.getInt64 = Ws;
+  function Ds(r5, e) {
+    let t = r5.getUint32(e), s = r5.getUint32(e + 4);
     return t * 4294967296 + s;
   }
-  U.getUint64 = mn;
+  I.getUint64 = Ds;
 });
-var Wt = S((D) => {
+var ft = T((_) => {
   "use strict";
-  var Pr, _r, Sr;
-  Object.defineProperty(D, "__esModule", { value: true });
-  D.utf8DecodeTD = D.TEXT_DECODER_THRESHOLD = D.utf8DecodeJs = D.utf8EncodeTE = D.TEXT_ENCODER_THRESHOLD = D.utf8EncodeJs = D.utf8Count = void 0;
-  var cs = Ve(), Ot = (typeof process > "u" || ((Pr = process == null ? void 0 : process.env) === null || Pr === void 0 ? void 0 : Pr.TEXT_ENCODING) !== "never") && typeof TextEncoder < "u" && typeof TextDecoder < "u";
-  function gn(r) {
-    let e = r.length, t = 0, s = 0;
+  var $t, Xt, Kt;
+  Object.defineProperty(_, "__esModule", { value: true });
+  _.utf8DecodeTD = _.TEXT_DECODER_THRESHOLD = _.utf8DecodeJs = _.utf8EncodeTE = _.TEXT_ENCODER_THRESHOLD = _.utf8EncodeJs = _.utf8Count = void 0;
+  var Ar = De(), yt = (typeof process > "u" || (($t = process == null ? void 0 : process.env) === null || $t === void 0 ? void 0 : $t.TEXT_ENCODING) !== "never") && typeof TextEncoder < "u" && typeof TextDecoder < "u";
+  function As(r5) {
+    let e = r5.length, t = 0, s = 0;
     for (; s < e; ) {
-      let n = r.charCodeAt(s++);
-      if (n & 4294967168)
-        if (!(n & 4294965248))
-          t += 2;
-        else {
-          if (n >= 55296 && n <= 56319 && s < e) {
-            let o = r.charCodeAt(s);
-            (o & 64512) === 56320 && (++s, n = ((n & 1023) << 10) + (o & 1023) + 65536);
-          }
-          n & 4294901760 ? t += 4 : t += 3;
-        }
-      else {
+      let n = r5.charCodeAt(s++);
+      if ((n & 4294967168) === 0) {
         t++;
         continue;
+      } else if ((n & 4294965248) === 0) t += 2;
+      else {
+        if (n >= 55296 && n <= 56319 && s < e) {
+          let o = r5.charCodeAt(s);
+          (o & 64512) === 56320 && (++s, n = ((n & 1023) << 10) + (o & 1023) + 65536);
+        }
+        (n & 4294901760) === 0 ? t += 3 : t += 4;
       }
     }
     return t;
   }
-  D.utf8Count = gn;
-  function bn(r, e, t) {
-    let s = r.length, n = t, o = 0;
+  _.utf8Count = As;
+  function Os(r5, e, t) {
+    let s = r5.length, n = t, o = 0;
     for (; o < s; ) {
-      let i = r.charCodeAt(o++);
-      if (i & 4294967168)
-        if (!(i & 4294965248))
-          e[n++] = i >> 6 & 31 | 192;
-        else {
-          if (i >= 55296 && i <= 56319 && o < s) {
-            let c = r.charCodeAt(o);
-            (c & 64512) === 56320 && (++o, i = ((i & 1023) << 10) + (c & 1023) + 65536);
-          }
-          i & 4294901760 ? (e[n++] = i >> 18 & 7 | 240, e[n++] = i >> 12 & 63 | 128, e[n++] = i >> 6 & 63 | 128) : (e[n++] = i >> 12 & 15 | 224, e[n++] = i >> 6 & 63 | 128);
-        }
-      else {
-        e[n++] = i;
+      let a = r5.charCodeAt(o++);
+      if ((a & 4294967168) === 0) {
+        e[n++] = a;
         continue;
+      } else if ((a & 4294965248) === 0) e[n++] = a >> 6 & 31 | 192;
+      else {
+        if (a >= 55296 && a <= 56319 && o < s) {
+          let c = r5.charCodeAt(o);
+          (c & 64512) === 56320 && (++o, a = ((a & 1023) << 10) + (c & 1023) + 65536);
+        }
+        (a & 4294901760) === 0 ? (e[n++] = a >> 12 & 15 | 224, e[n++] = a >> 6 & 63 | 128) : (e[n++] = a >> 18 & 7 | 240, e[n++] = a >> 12 & 63 | 128, e[n++] = a >> 6 & 63 | 128);
       }
-      e[n++] = i & 63 | 128;
+      e[n++] = a & 63 | 128;
     }
   }
-  D.utf8EncodeJs = bn;
-  var Je = Ot ? new TextEncoder() : void 0;
-  D.TEXT_ENCODER_THRESHOLD = Ot ? typeof process < "u" && ((_r = process == null ? void 0 : process.env) === null || _r === void 0 ? void 0 : _r.TEXT_ENCODING) !== "force" ? 200 : 0 : cs.UINT32_MAX;
-  function wn(r, e, t) {
-    e.set(Je.encode(r), t);
+  _.utf8EncodeJs = Os;
+  var Ae = yt ? new TextEncoder() : void 0;
+  _.TEXT_ENCODER_THRESHOLD = yt ? typeof process < "u" && ((Xt = process == null ? void 0 : process.env) === null || Xt === void 0 ? void 0 : Xt.TEXT_ENCODING) !== "force" ? 200 : 0 : Ar.UINT32_MAX;
+  function Cs(r5, e, t) {
+    e.set(Ae.encode(r5), t);
   }
-  function xn(r, e, t) {
-    Je.encodeInto(r, e.subarray(t));
+  function Is(r5, e, t) {
+    Ae.encodeInto(r5, e.subarray(t));
   }
-  D.utf8EncodeTE = Je != null && Je.encodeInto ? xn : wn;
-  var vn = 4096;
-  function En(r, e, t) {
-    let s = e, n = s + t, o = [], i = "";
+  _.utf8EncodeTE = Ae != null && Ae.encodeInto ? Is : Cs;
+  var Us = 4096;
+  function Ns(r5, e, t) {
+    let s = e, n = s + t, o = [], a = "";
     for (; s < n; ) {
-      let c = r[s++];
-      if (!(c & 128))
-        o.push(c);
+      let c = r5[s++];
+      if ((c & 128) === 0) o.push(c);
       else if ((c & 224) === 192) {
-        let p = r[s++] & 63;
-        o.push((c & 31) << 6 | p);
+        let u = r5[s++] & 63;
+        o.push((c & 31) << 6 | u);
       } else if ((c & 240) === 224) {
-        let p = r[s++] & 63, k = r[s++] & 63;
-        o.push((c & 31) << 12 | p << 6 | k);
+        let u = r5[s++] & 63, k = r5[s++] & 63;
+        o.push((c & 31) << 12 | u << 6 | k);
       } else if ((c & 248) === 240) {
-        let p = r[s++] & 63, k = r[s++] & 63, b = r[s++] & 63, C = (c & 7) << 18 | p << 12 | k << 6 | b;
-        C > 65535 && (C -= 65536, o.push(C >>> 10 & 1023 | 55296), C = 56320 | C & 1023), o.push(C);
-      } else
-        o.push(c);
-      o.length >= vn && (i += String.fromCharCode(...o), o.length = 0);
+        let u = r5[s++] & 63, k = r5[s++] & 63, g = r5[s++] & 63, H = (c & 7) << 18 | u << 12 | k << 6 | g;
+        H > 65535 && (H -= 65536, o.push(H >>> 10 & 1023 | 55296), H = 56320 | H & 1023), o.push(H);
+      } else o.push(c);
+      o.length >= Us && (a += String.fromCharCode(...o), o.length = 0);
     }
-    return o.length > 0 && (i += String.fromCharCode(...o)), i;
+    return o.length > 0 && (a += String.fromCharCode(...o)), a;
   }
-  D.utf8DecodeJs = En;
-  var Tn = Ot ? new TextDecoder() : null;
-  D.TEXT_DECODER_THRESHOLD = Ot ? typeof process < "u" && ((Sr = process == null ? void 0 : process.env) === null || Sr === void 0 ? void 0 : Sr.TEXT_DECODER) !== "force" ? 200 : 0 : cs.UINT32_MAX;
-  function Pn(r, e, t) {
-    let s = r.subarray(e, e + t);
-    return Tn.decode(s);
+  _.utf8DecodeJs = Ns;
+  var js = yt ? new TextDecoder() : null;
+  _.TEXT_DECODER_THRESHOLD = yt ? typeof process < "u" && ((Kt = process == null ? void 0 : process.env) === null || Kt === void 0 ? void 0 : Kt.TEXT_DECODER) !== "force" ? 200 : 0 : Ar.UINT32_MAX;
+  function Bs(r5, e, t) {
+    let s = r5.subarray(e, e + t);
+    return js.decode(s);
   }
-  D.utf8DecodeTD = Pn;
+  _.utf8DecodeTD = Bs;
 });
-var Dr = S((At) => {
+var Yt = T((mt) => {
   "use strict";
-  Object.defineProperty(At, "__esModule", { value: true });
-  At.ExtData = void 0;
-  var Mr = class {
+  Object.defineProperty(mt, "__esModule", { value: true });
+  mt.ExtData = void 0;
+  var Qt = class {
     constructor(e, t) {
       this.type = e, this.data = t;
     }
   };
-  At.ExtData = Mr;
+  mt.ExtData = Qt;
 });
-var Ut = S((It) => {
+var gt = T((Rt) => {
   "use strict";
-  Object.defineProperty(It, "__esModule", { value: true });
-  It.DecodeError = void 0;
-  var be = class extends Error {
+  Object.defineProperty(Rt, "__esModule", { value: true });
+  Rt.DecodeError = void 0;
+  var Zt = class r5 extends Error {
     constructor(e) {
       super(e);
-      let t = Object.create(be.prototype);
-      Object.setPrototypeOf(this, t), Object.defineProperty(this, "name", { configurable: true, enumerable: false, value: be.name });
+      let t = Object.create(r5.prototype);
+      Object.setPrototypeOf(this, t), Object.defineProperty(this, "name", { configurable: true, enumerable: false, value: r5.name });
     }
   };
-  It.DecodeError = be;
+  Rt.DecodeError = Zt;
 });
-var kr = S((_) => {
+var er = T((P) => {
   "use strict";
-  Object.defineProperty(_, "__esModule", { value: true });
-  _.timestampExtension = _.decodeTimestampExtension = _.decodeTimestampToTimeSpec = _.encodeTimestampExtension = _.encodeDateToTimeSpec = _.encodeTimeSpecToTimestamp = _.EXT_TIMESTAMP = void 0;
-  var _n = Ut(), us = Ve();
-  _.EXT_TIMESTAMP = -1;
-  var Sn = 4294967296 - 1, Mn = 17179869184 - 1;
-  function ps({ sec: r, nsec: e }) {
-    if (r >= 0 && e >= 0 && r <= Mn)
-      if (e === 0 && r <= Sn) {
-        let t = new Uint8Array(4);
-        return new DataView(t.buffer).setUint32(0, r), t;
-      } else {
-        let t = r / 4294967296, s = r & 4294967295, n = new Uint8Array(8), o = new DataView(n.buffer);
-        return o.setUint32(0, e << 2 | t & 3), o.setUint32(4, s), n;
-      }
+  Object.defineProperty(P, "__esModule", { value: true });
+  P.timestampExtension = P.decodeTimestampExtension = P.decodeTimestampToTimeSpec = P.encodeTimestampExtension = P.encodeDateToTimeSpec = P.encodeTimeSpecToTimestamp = P.EXT_TIMESTAMP = void 0;
+  var Ls = gt(), Or = De();
+  P.EXT_TIMESTAMP = -1;
+  var Fs = 4294967296 - 1, qs = 17179869184 - 1;
+  function Cr({ sec: r5, nsec: e }) {
+    if (r5 >= 0 && e >= 0 && r5 <= qs) if (e === 0 && r5 <= Fs) {
+      let t = new Uint8Array(4);
+      return new DataView(t.buffer).setUint32(0, r5), t;
+    } else {
+      let t = r5 / 4294967296, s = r5 & 4294967295, n = new Uint8Array(8), o = new DataView(n.buffer);
+      return o.setUint32(0, e << 2 | t & 3), o.setUint32(4, s), n;
+    }
     else {
       let t = new Uint8Array(12), s = new DataView(t.buffer);
-      return s.setUint32(0, e), (0, us.setInt64)(s, 4, r), t;
+      return s.setUint32(0, e), (0, Or.setInt64)(s, 4, r5), t;
     }
   }
-  _.encodeTimeSpecToTimestamp = ps;
-  function ds(r) {
-    let e = r.getTime(), t = Math.floor(e / 1e3), s = (e - t * 1e3) * 1e6, n = Math.floor(s / 1e9);
+  P.encodeTimeSpecToTimestamp = Cr;
+  function Ir(r5) {
+    let e = r5.getTime(), t = Math.floor(e / 1e3), s = (e - t * 1e3) * 1e6, n = Math.floor(s / 1e9);
     return { sec: t + n, nsec: s - n * 1e9 };
   }
-  _.encodeDateToTimeSpec = ds;
-  function hs(r) {
-    if (r instanceof Date) {
-      let e = ds(r);
-      return ps(e);
-    } else
-      return null;
+  P.encodeDateToTimeSpec = Ir;
+  function Ur(r5) {
+    if (r5 instanceof Date) {
+      let e = Ir(r5);
+      return Cr(e);
+    } else return null;
   }
-  _.encodeTimestampExtension = hs;
-  function ys(r) {
-    let e = new DataView(r.buffer, r.byteOffset, r.byteLength);
-    switch (r.byteLength) {
+  P.encodeTimestampExtension = Ur;
+  function Nr(r5) {
+    let e = new DataView(r5.buffer, r5.byteOffset, r5.byteLength);
+    switch (r5.byteLength) {
       case 4:
         return { sec: e.getUint32(0), nsec: 0 };
       case 8: {
@@ -246,32 +227,31 @@ var kr = S((_) => {
         return { sec: n, nsec: o };
       }
       case 12: {
-        let t = (0, us.getInt64)(e, 4), s = e.getUint32(0);
+        let t = (0, Or.getInt64)(e, 4), s = e.getUint32(0);
         return { sec: t, nsec: s };
       }
       default:
-        throw new _n.DecodeError(`Unrecognized data size for timestamp (expected 4, 8, or 12): ${r.length}`);
+        throw new Ls.DecodeError(`Unrecognized data size for timestamp (expected 4, 8, or 12): ${r5.length}`);
     }
   }
-  _.decodeTimestampToTimeSpec = ys;
-  function fs(r) {
-    let e = ys(r);
+  P.decodeTimestampToTimeSpec = Nr;
+  function jr(r5) {
+    let e = Nr(r5);
     return new Date(e.sec * 1e3 + e.nsec / 1e6);
   }
-  _.decodeTimestampExtension = fs;
-  _.timestampExtension = { type: _.EXT_TIMESTAMP, encode: hs, decode: fs };
+  P.decodeTimestampExtension = jr;
+  P.timestampExtension = { type: P.EXT_TIMESTAMP, encode: Ur, decode: jr };
 });
-var Nt = S((jt) => {
+var xt = T((wt) => {
   "use strict";
-  Object.defineProperty(jt, "__esModule", { value: true });
-  jt.ExtensionCodec = void 0;
-  var Ct = Dr(), Dn = kr(), He = class {
+  Object.defineProperty(wt, "__esModule", { value: true });
+  wt.ExtensionCodec = void 0;
+  var bt = Yt(), Vs = er(), Oe = class {
     constructor() {
-      this.builtInEncoders = [], this.builtInDecoders = [], this.encoders = [], this.decoders = [], this.register(Dn.timestampExtension);
+      this.builtInEncoders = [], this.builtInDecoders = [], this.encoders = [], this.decoders = [], this.register(Vs.timestampExtension);
     }
     register({ type: e, encode: t, decode: s }) {
-      if (e >= 0)
-        this.encoders[e] = t, this.decoders[e] = s;
+      if (e >= 0) this.encoders[e] = t, this.decoders[e] = s;
       else {
         let n = 1 + e;
         this.builtInEncoders[n] = t, this.builtInDecoders[n] = s;
@@ -283,8 +263,8 @@ var Nt = S((jt) => {
         if (n != null) {
           let o = n(e, t);
           if (o != null) {
-            let i = -1 - s;
-            return new Ct.ExtData(i, o);
+            let a = -1 - s;
+            return new bt.ExtData(a, o);
           }
         }
       }
@@ -293,47 +273,46 @@ var Nt = S((jt) => {
         if (n != null) {
           let o = n(e, t);
           if (o != null) {
-            let i = s;
-            return new Ct.ExtData(i, o);
+            let a = s;
+            return new bt.ExtData(a, o);
           }
         }
       }
-      return e instanceof Ct.ExtData ? e : null;
+      return e instanceof bt.ExtData ? e : null;
     }
     decode(e, t, s) {
       let n = t < 0 ? this.builtInDecoders[-1 - t] : this.decoders[t];
-      return n ? n(e, t, s) : new Ct.ExtData(t, e);
+      return n ? n(e, t, s) : new bt.ExtData(t, e);
     }
   };
-  jt.ExtensionCodec = He;
-  He.defaultCodec = new He();
+  wt.ExtensionCodec = Oe;
+  Oe.defaultCodec = new Oe();
 });
-var Or = S((we) => {
+var tr = T((de) => {
   "use strict";
-  Object.defineProperty(we, "__esModule", { value: true });
-  we.createDataView = we.ensureUint8Array = void 0;
-  function Rs(r) {
-    return r instanceof Uint8Array ? r : ArrayBuffer.isView(r) ? new Uint8Array(r.buffer, r.byteOffset, r.byteLength) : r instanceof ArrayBuffer ? new Uint8Array(r) : Uint8Array.from(r);
+  Object.defineProperty(de, "__esModule", { value: true });
+  de.createDataView = de.ensureUint8Array = void 0;
+  function Br(r5) {
+    return r5 instanceof Uint8Array ? r5 : ArrayBuffer.isView(r5) ? new Uint8Array(r5.buffer, r5.byteOffset, r5.byteLength) : r5 instanceof ArrayBuffer ? new Uint8Array(r5) : Uint8Array.from(r5);
   }
-  we.ensureUint8Array = Rs;
-  function kn(r) {
-    if (r instanceof ArrayBuffer)
-      return new DataView(r);
-    let e = Rs(r);
+  de.ensureUint8Array = Br;
+  function Js(r5) {
+    if (r5 instanceof ArrayBuffer) return new DataView(r5);
+    let e = Br(r5);
     return new DataView(e.buffer, e.byteOffset, e.byteLength);
   }
-  we.createDataView = kn;
+  de.createDataView = Js;
 });
-var Ar = S((V) => {
+var sr = T((B) => {
   "use strict";
-  Object.defineProperty(V, "__esModule", { value: true });
-  V.Encoder = V.DEFAULT_INITIAL_BUFFER_SIZE = V.DEFAULT_MAX_DEPTH = void 0;
-  var ze = Wt(), On = Nt(), ms = Ve(), Wn = Or();
-  V.DEFAULT_MAX_DEPTH = 100;
-  V.DEFAULT_INITIAL_BUFFER_SIZE = 2048;
-  var Wr = class {
-    constructor(e = On.ExtensionCodec.defaultCodec, t = void 0, s = V.DEFAULT_MAX_DEPTH, n = V.DEFAULT_INITIAL_BUFFER_SIZE, o = false, i = false, c = false, p = false) {
-      this.extensionCodec = e, this.context = t, this.maxDepth = s, this.initialBufferSize = n, this.sortKeys = o, this.forceFloat32 = i, this.ignoreUndefined = c, this.forceIntegerToFloat = p, this.pos = 0, this.view = new DataView(new ArrayBuffer(this.initialBufferSize)), this.bytes = new Uint8Array(this.view.buffer);
+  Object.defineProperty(B, "__esModule", { value: true });
+  B.Encoder = B.DEFAULT_INITIAL_BUFFER_SIZE = B.DEFAULT_MAX_DEPTH = void 0;
+  var Ce = ft(), Hs = xt(), Lr = De(), zs = tr();
+  B.DEFAULT_MAX_DEPTH = 100;
+  B.DEFAULT_INITIAL_BUFFER_SIZE = 2048;
+  var rr = class {
+    constructor(e = Hs.ExtensionCodec.defaultCodec, t = void 0, s = B.DEFAULT_MAX_DEPTH, n = B.DEFAULT_INITIAL_BUFFER_SIZE, o = false, a = false, c = false, u = false) {
+      this.extensionCodec = e, this.context = t, this.maxDepth = s, this.initialBufferSize = n, this.sortKeys = o, this.forceFloat32 = a, this.ignoreUndefined = c, this.forceIntegerToFloat = u, this.pos = 0, this.view = new DataView(new ArrayBuffer(this.initialBufferSize)), this.bytes = new Uint8Array(this.view.buffer);
     }
     reinitializeState() {
       this.pos = 0;
@@ -345,8 +324,7 @@ var Ar = S((V) => {
       return this.reinitializeState(), this.doEncode(e, 1), this.bytes.slice(0, this.pos);
     }
     doEncode(e, t) {
-      if (t > this.maxDepth)
-        throw new Error(`Too deep objects in depth ${t}`);
+      if (t > this.maxDepth) throw new Error(`Too deep objects in depth ${t}`);
       e == null ? this.encodeNil() : typeof e == "boolean" ? this.encodeBoolean(e) : typeof e == "number" ? this.encodeNumber(e) : typeof e == "string" ? this.encodeString(e) : this.encodeObject(e, t);
     }
     ensureBufferSizeToWrite(e) {
@@ -367,108 +345,75 @@ var Ar = S((V) => {
       Number.isSafeInteger(e) && !this.forceIntegerToFloat ? e >= 0 ? e < 128 ? this.writeU8(e) : e < 256 ? (this.writeU8(204), this.writeU8(e)) : e < 65536 ? (this.writeU8(205), this.writeU16(e)) : e < 4294967296 ? (this.writeU8(206), this.writeU32(e)) : (this.writeU8(207), this.writeU64(e)) : e >= -32 ? this.writeU8(224 | e + 32) : e >= -128 ? (this.writeU8(208), this.writeI8(e)) : e >= -32768 ? (this.writeU8(209), this.writeI16(e)) : e >= -2147483648 ? (this.writeU8(210), this.writeI32(e)) : (this.writeU8(211), this.writeI64(e)) : this.forceFloat32 ? (this.writeU8(202), this.writeF32(e)) : (this.writeU8(203), this.writeF64(e));
     }
     writeStringHeader(e) {
-      if (e < 32)
-        this.writeU8(160 + e);
-      else if (e < 256)
-        this.writeU8(217), this.writeU8(e);
-      else if (e < 65536)
-        this.writeU8(218), this.writeU16(e);
-      else if (e < 4294967296)
-        this.writeU8(219), this.writeU32(e);
-      else
-        throw new Error(`Too long string: ${e} bytes in UTF-8`);
+      if (e < 32) this.writeU8(160 + e);
+      else if (e < 256) this.writeU8(217), this.writeU8(e);
+      else if (e < 65536) this.writeU8(218), this.writeU16(e);
+      else if (e < 4294967296) this.writeU8(219), this.writeU32(e);
+      else throw new Error(`Too long string: ${e} bytes in UTF-8`);
     }
     encodeString(e) {
-      if (e.length > ze.TEXT_ENCODER_THRESHOLD) {
-        let n = (0, ze.utf8Count)(e);
-        this.ensureBufferSizeToWrite(5 + n), this.writeStringHeader(n), (0, ze.utf8EncodeTE)(e, this.bytes, this.pos), this.pos += n;
+      if (e.length > Ce.TEXT_ENCODER_THRESHOLD) {
+        let n = (0, Ce.utf8Count)(e);
+        this.ensureBufferSizeToWrite(5 + n), this.writeStringHeader(n), (0, Ce.utf8EncodeTE)(e, this.bytes, this.pos), this.pos += n;
       } else {
-        let n = (0, ze.utf8Count)(e);
-        this.ensureBufferSizeToWrite(5 + n), this.writeStringHeader(n), (0, ze.utf8EncodeJs)(e, this.bytes, this.pos), this.pos += n;
+        let n = (0, Ce.utf8Count)(e);
+        this.ensureBufferSizeToWrite(5 + n), this.writeStringHeader(n), (0, Ce.utf8EncodeJs)(e, this.bytes, this.pos), this.pos += n;
       }
     }
     encodeObject(e, t) {
       let s = this.extensionCodec.tryToEncode(e, this.context);
-      if (s != null)
-        this.encodeExtension(s);
-      else if (Array.isArray(e))
-        this.encodeArray(e, t);
-      else if (ArrayBuffer.isView(e))
-        this.encodeBinary(e);
-      else if (typeof e == "object")
-        this.encodeMap(e, t);
-      else
-        throw new Error(`Unrecognized object: ${Object.prototype.toString.apply(e)}`);
+      if (s != null) this.encodeExtension(s);
+      else if (Array.isArray(e)) this.encodeArray(e, t);
+      else if (ArrayBuffer.isView(e)) this.encodeBinary(e);
+      else if (typeof e == "object") this.encodeMap(e, t);
+      else throw new Error(`Unrecognized object: ${Object.prototype.toString.apply(e)}`);
     }
     encodeBinary(e) {
       let t = e.byteLength;
-      if (t < 256)
-        this.writeU8(196), this.writeU8(t);
-      else if (t < 65536)
-        this.writeU8(197), this.writeU16(t);
-      else if (t < 4294967296)
-        this.writeU8(198), this.writeU32(t);
-      else
-        throw new Error(`Too large binary: ${t}`);
-      let s = (0, Wn.ensureUint8Array)(e);
+      if (t < 256) this.writeU8(196), this.writeU8(t);
+      else if (t < 65536) this.writeU8(197), this.writeU16(t);
+      else if (t < 4294967296) this.writeU8(198), this.writeU32(t);
+      else throw new Error(`Too large binary: ${t}`);
+      let s = (0, zs.ensureUint8Array)(e);
       this.writeU8a(s);
     }
     encodeArray(e, t) {
       let s = e.length;
-      if (s < 16)
-        this.writeU8(144 + s);
-      else if (s < 65536)
-        this.writeU8(220), this.writeU16(s);
-      else if (s < 4294967296)
-        this.writeU8(221), this.writeU32(s);
-      else
-        throw new Error(`Too large array: ${s}`);
-      for (let n of e)
-        this.doEncode(n, t + 1);
+      if (s < 16) this.writeU8(144 + s);
+      else if (s < 65536) this.writeU8(220), this.writeU16(s);
+      else if (s < 4294967296) this.writeU8(221), this.writeU32(s);
+      else throw new Error(`Too large array: ${s}`);
+      for (let n of e) this.doEncode(n, t + 1);
     }
     countWithoutUndefined(e, t) {
       let s = 0;
-      for (let n of t)
-        e[n] !== void 0 && s++;
+      for (let n of t) e[n] !== void 0 && s++;
       return s;
     }
     encodeMap(e, t) {
       let s = Object.keys(e);
       this.sortKeys && s.sort();
       let n = this.ignoreUndefined ? this.countWithoutUndefined(e, s) : s.length;
-      if (n < 16)
-        this.writeU8(128 + n);
-      else if (n < 65536)
-        this.writeU8(222), this.writeU16(n);
-      else if (n < 4294967296)
-        this.writeU8(223), this.writeU32(n);
-      else
-        throw new Error(`Too large map object: ${n}`);
+      if (n < 16) this.writeU8(128 + n);
+      else if (n < 65536) this.writeU8(222), this.writeU16(n);
+      else if (n < 4294967296) this.writeU8(223), this.writeU32(n);
+      else throw new Error(`Too large map object: ${n}`);
       for (let o of s) {
-        let i = e[o];
-        this.ignoreUndefined && i === void 0 || (this.encodeString(o), this.doEncode(i, t + 1));
+        let a = e[o];
+        this.ignoreUndefined && a === void 0 || (this.encodeString(o), this.doEncode(a, t + 1));
       }
     }
     encodeExtension(e) {
       let t = e.data.length;
-      if (t === 1)
-        this.writeU8(212);
-      else if (t === 2)
-        this.writeU8(213);
-      else if (t === 4)
-        this.writeU8(214);
-      else if (t === 8)
-        this.writeU8(215);
-      else if (t === 16)
-        this.writeU8(216);
-      else if (t < 256)
-        this.writeU8(199), this.writeU8(t);
-      else if (t < 65536)
-        this.writeU8(200), this.writeU16(t);
-      else if (t < 4294967296)
-        this.writeU8(201), this.writeU32(t);
-      else
-        throw new Error(`Too large extension object: ${t}`);
+      if (t === 1) this.writeU8(212);
+      else if (t === 2) this.writeU8(213);
+      else if (t === 4) this.writeU8(214);
+      else if (t === 8) this.writeU8(215);
+      else if (t === 16) this.writeU8(216);
+      else if (t < 256) this.writeU8(199), this.writeU8(t);
+      else if (t < 65536) this.writeU8(200), this.writeU16(t);
+      else if (t < 4294967296) this.writeU8(201), this.writeU32(t);
+      else throw new Error(`Too large extension object: ${t}`);
       this.writeI8(e.type), this.writeU8a(e.data);
     }
     writeU8(e) {
@@ -500,56 +445,52 @@ var Ar = S((V) => {
       this.ensureBufferSizeToWrite(8), this.view.setFloat64(this.pos, e), this.pos += 8;
     }
     writeU64(e) {
-      this.ensureBufferSizeToWrite(8), (0, ms.setUint64)(this.view, this.pos, e), this.pos += 8;
+      this.ensureBufferSizeToWrite(8), (0, Lr.setUint64)(this.view, this.pos, e), this.pos += 8;
     }
     writeI64(e) {
-      this.ensureBufferSizeToWrite(8), (0, ms.setInt64)(this.view, this.pos, e), this.pos += 8;
+      this.ensureBufferSizeToWrite(8), (0, Lr.setInt64)(this.view, this.pos, e), this.pos += 8;
     }
   };
-  V.Encoder = Wr;
+  B.Encoder = rr;
 });
-var gs = S((Bt) => {
+var Fr = T((Et) => {
   "use strict";
-  Object.defineProperty(Bt, "__esModule", { value: true });
-  Bt.encode = void 0;
-  var An = Ar(), In = {};
-  function Un(r, e = In) {
-    return new An.Encoder(e.extensionCodec, e.context, e.maxDepth, e.initialBufferSize, e.sortKeys, e.forceFloat32, e.ignoreUndefined, e.forceIntegerToFloat).encodeSharedRef(r);
+  Object.defineProperty(Et, "__esModule", { value: true });
+  Et.encode = void 0;
+  var Gs = sr(), $s = {};
+  function Xs(r5, e = $s) {
+    return new Gs.Encoder(e.extensionCodec, e.context, e.maxDepth, e.initialBufferSize, e.sortKeys, e.forceFloat32, e.ignoreUndefined, e.forceIntegerToFloat).encodeSharedRef(r5);
   }
-  Bt.encode = Un;
+  Et.encode = Xs;
 });
-var bs = S((Lt) => {
+var qr = T((vt) => {
   "use strict";
-  Object.defineProperty(Lt, "__esModule", { value: true });
-  Lt.prettyByte = void 0;
-  function Cn(r) {
-    return `${r < 0 ? "-" : ""}0x${Math.abs(r).toString(16).padStart(2, "0")}`;
+  Object.defineProperty(vt, "__esModule", { value: true });
+  vt.prettyByte = void 0;
+  function Ks(r5) {
+    return `${r5 < 0 ? "-" : ""}0x${Math.abs(r5).toString(16).padStart(2, "0")}`;
   }
-  Lt.prettyByte = Cn;
+  vt.prettyByte = Ks;
 });
-var ws = S((Ft) => {
+var Vr = T((Pt) => {
   "use strict";
-  Object.defineProperty(Ft, "__esModule", { value: true });
-  Ft.CachedKeyDecoder = void 0;
-  var jn = Wt(), Nn = 16, Bn = 16, Ir = class {
-    constructor(e = Nn, t = Bn) {
+  Object.defineProperty(Pt, "__esModule", { value: true });
+  Pt.CachedKeyDecoder = void 0;
+  var Qs = ft(), Ys = 16, Zs = 16, nr = class {
+    constructor(e = Ys, t = Zs) {
       this.maxKeyLength = e, this.maxLengthPerKey = t, this.hit = 0, this.miss = 0, this.caches = [];
-      for (let s = 0; s < this.maxKeyLength; s++)
-        this.caches.push([]);
+      for (let s = 0; s < this.maxKeyLength; s++) this.caches.push([]);
     }
     canBeCached(e) {
       return e > 0 && e <= this.maxKeyLength;
     }
     find(e, t, s) {
       let n = this.caches[s - 1];
-      e:
-        for (let o of n) {
-          let i = o.bytes;
-          for (let c = 0; c < s; c++)
-            if (i[c] !== e[t + c])
-              continue e;
-          return o.str;
-        }
+      e: for (let o of n) {
+        let a = o.bytes;
+        for (let c = 0; c < s; c++) if (a[c] !== e[t + c]) continue e;
+        return o.str;
+      }
       return null;
     }
     store(e, t) {
@@ -558,46 +499,44 @@ var ws = S((Ft) => {
     }
     decode(e, t, s) {
       let n = this.find(e, t, s);
-      if (n != null)
-        return this.hit++, n;
+      if (n != null) return this.hit++, n;
       this.miss++;
-      let o = (0, jn.utf8DecodeJs)(e, t, s), i = Uint8Array.prototype.slice.call(e, t, t + s);
-      return this.store(i, o), o;
+      let o = (0, Qs.utf8DecodeJs)(e, t, s), a = Uint8Array.prototype.slice.call(e, t, t + s);
+      return this.store(a, o), o;
     }
   };
-  Ft.CachedKeyDecoder = Ir;
+  Pt.CachedKeyDecoder = nr;
 });
-var qt = S((K) => {
+var Tt = T(($) => {
   "use strict";
-  Object.defineProperty(K, "__esModule", { value: true });
-  K.Decoder = K.DataViewIndexOutOfBoundsError = void 0;
-  var Ur = bs(), Ln = Nt(), le = Ve(), Cr = Wt(), jr = Or(), Fn = ws(), $ = Ut(), qn = (r) => {
-    let e = typeof r;
+  Object.defineProperty($, "__esModule", { value: true });
+  $.Decoder = $.DataViewIndexOutOfBoundsError = void 0;
+  var or = qr(), en = xt(), oe = De(), ar = ft(), ir = tr(), tn = Vr(), G = gt(), rn = (r5) => {
+    let e = typeof r5;
     return e === "string" || e === "number";
-  }, Xe = -1, Br = new DataView(new ArrayBuffer(0)), Vn = new Uint8Array(Br.buffer);
-  K.DataViewIndexOutOfBoundsError = (() => {
+  }, Ie = -1, cr = new DataView(new ArrayBuffer(0)), sn = new Uint8Array(cr.buffer);
+  $.DataViewIndexOutOfBoundsError = (() => {
     try {
-      Br.getInt8(0);
-    } catch (r) {
-      return r.constructor;
+      cr.getInt8(0);
+    } catch (r5) {
+      return r5.constructor;
     }
     throw new Error("never reached");
   })();
-  var xs = new K.DataViewIndexOutOfBoundsError("Insufficient data"), Jn = new Fn.CachedKeyDecoder(), Nr = class {
-    constructor(e = Ln.ExtensionCodec.defaultCodec, t = void 0, s = le.UINT32_MAX, n = le.UINT32_MAX, o = le.UINT32_MAX, i = le.UINT32_MAX, c = le.UINT32_MAX, p = Jn) {
-      this.extensionCodec = e, this.context = t, this.maxStrLength = s, this.maxBinLength = n, this.maxArrayLength = o, this.maxMapLength = i, this.maxExtLength = c, this.keyDecoder = p, this.totalPos = 0, this.pos = 0, this.view = Br, this.bytes = Vn, this.headByte = Xe, this.stack = [];
+  var Jr = new $.DataViewIndexOutOfBoundsError("Insufficient data"), nn = new tn.CachedKeyDecoder(), lr = class {
+    constructor(e = en.ExtensionCodec.defaultCodec, t = void 0, s = oe.UINT32_MAX, n = oe.UINT32_MAX, o = oe.UINT32_MAX, a = oe.UINT32_MAX, c = oe.UINT32_MAX, u = nn) {
+      this.extensionCodec = e, this.context = t, this.maxStrLength = s, this.maxBinLength = n, this.maxArrayLength = o, this.maxMapLength = a, this.maxExtLength = c, this.keyDecoder = u, this.totalPos = 0, this.pos = 0, this.view = cr, this.bytes = sn, this.headByte = Ie, this.stack = [];
     }
     reinitializeState() {
-      this.totalPos = 0, this.headByte = Xe, this.stack.length = 0;
+      this.totalPos = 0, this.headByte = Ie, this.stack.length = 0;
     }
     setBuffer(e) {
-      this.bytes = (0, jr.ensureUint8Array)(e), this.view = (0, jr.createDataView)(this.bytes), this.pos = 0;
+      this.bytes = (0, ir.ensureUint8Array)(e), this.view = (0, ir.createDataView)(this.bytes), this.pos = 0;
     }
     appendBuffer(e) {
-      if (this.headByte === Xe && !this.hasRemaining(1))
-        this.setBuffer(e);
+      if (this.headByte === Ie && !this.hasRemaining(1)) this.setBuffer(e);
       else {
-        let t = this.bytes.subarray(this.pos), s = (0, jr.ensureUint8Array)(e), n = new Uint8Array(t.length + s.length);
+        let t = this.bytes.subarray(this.pos), s = (0, ir.ensureUint8Array)(e), n = new Uint8Array(t.length + s.length);
         n.set(t), n.set(s, t.length), this.setBuffer(n);
       }
     }
@@ -611,35 +550,30 @@ var qt = S((K) => {
     decode(e) {
       this.reinitializeState(), this.setBuffer(e);
       let t = this.doDecodeSync();
-      if (this.hasRemaining(1))
-        throw this.createExtraByteError(this.pos);
+      if (this.hasRemaining(1)) throw this.createExtraByteError(this.pos);
       return t;
     }
     *decodeMulti(e) {
-      for (this.reinitializeState(), this.setBuffer(e); this.hasRemaining(1); )
-        yield this.doDecodeSync();
+      for (this.reinitializeState(), this.setBuffer(e); this.hasRemaining(1); ) yield this.doDecodeSync();
     }
     async decodeAsync(e) {
       let t = false, s;
       for await (let c of e) {
-        if (t)
-          throw this.createExtraByteError(this.totalPos);
+        if (t) throw this.createExtraByteError(this.totalPos);
         this.appendBuffer(c);
         try {
           s = this.doDecodeSync(), t = true;
-        } catch (p) {
-          if (!(p instanceof K.DataViewIndexOutOfBoundsError))
-            throw p;
+        } catch (u) {
+          if (!(u instanceof $.DataViewIndexOutOfBoundsError)) throw u;
         }
         this.totalPos += this.pos;
       }
       if (t) {
-        if (this.hasRemaining(1))
-          throw this.createExtraByteError(this.totalPos);
+        if (this.hasRemaining(1)) throw this.createExtraByteError(this.totalPos);
         return s;
       }
-      let { headByte: n, pos: o, totalPos: i } = this;
-      throw new RangeError(`Insufficient data in parsing ${(0, Ur.prettyByte)(n)} at ${i} (${o} in the current buffer)`);
+      let { headByte: n, pos: o, totalPos: a } = this;
+      throw new RangeError(`Insufficient data in parsing ${(0, or.prettyByte)(n)} at ${a} (${o} in the current buffer)`);
     }
     decodeArrayStream(e) {
       return this.decodeMultiAsync(e, true);
@@ -650,170 +584,132 @@ var qt = S((K) => {
     async *decodeMultiAsync(e, t) {
       let s = t, n = -1;
       for await (let o of e) {
-        if (t && n === 0)
-          throw this.createExtraByteError(this.totalPos);
+        if (t && n === 0) throw this.createExtraByteError(this.totalPos);
         this.appendBuffer(o), s && (n = this.readArraySize(), s = false, this.complete());
         try {
-          for (; yield this.doDecodeSync(), --n !== 0; )
-            ;
-        } catch (i) {
-          if (!(i instanceof K.DataViewIndexOutOfBoundsError))
-            throw i;
+          for (; yield this.doDecodeSync(), --n !== 0; ) ;
+        } catch (a) {
+          if (!(a instanceof $.DataViewIndexOutOfBoundsError)) throw a;
         }
         this.totalPos += this.pos;
       }
     }
     doDecodeSync() {
-      e:
-        for (; ; ) {
-          let e = this.readHeadByte(), t;
-          if (e >= 224)
-            t = e - 256;
-          else if (e < 192)
-            if (e < 128)
-              t = e;
-            else if (e < 144) {
-              let n = e - 128;
-              if (n !== 0) {
-                this.pushMapState(n), this.complete();
-                continue e;
-              } else
-                t = {};
-            } else if (e < 160) {
-              let n = e - 144;
-              if (n !== 0) {
-                this.pushArrayState(n), this.complete();
-                continue e;
-              } else
-                t = [];
-            } else {
-              let n = e - 160;
-              t = this.decodeUtf8String(n, 0);
-            }
-          else if (e === 192)
-            t = null;
-          else if (e === 194)
-            t = false;
-          else if (e === 195)
-            t = true;
-          else if (e === 202)
-            t = this.readF32();
-          else if (e === 203)
-            t = this.readF64();
-          else if (e === 204)
-            t = this.readU8();
-          else if (e === 205)
-            t = this.readU16();
-          else if (e === 206)
-            t = this.readU32();
-          else if (e === 207)
-            t = this.readU64();
-          else if (e === 208)
-            t = this.readI8();
-          else if (e === 209)
-            t = this.readI16();
-          else if (e === 210)
-            t = this.readI32();
-          else if (e === 211)
-            t = this.readI64();
-          else if (e === 217) {
-            let n = this.lookU8();
-            t = this.decodeUtf8String(n, 1);
-          } else if (e === 218) {
-            let n = this.lookU16();
-            t = this.decodeUtf8String(n, 2);
-          } else if (e === 219) {
-            let n = this.lookU32();
-            t = this.decodeUtf8String(n, 4);
-          } else if (e === 220) {
-            let n = this.readU16();
-            if (n !== 0) {
-              this.pushArrayState(n), this.complete();
-              continue e;
-            } else
-              t = [];
-          } else if (e === 221) {
-            let n = this.readU32();
-            if (n !== 0) {
-              this.pushArrayState(n), this.complete();
-              continue e;
-            } else
-              t = [];
-          } else if (e === 222) {
-            let n = this.readU16();
-            if (n !== 0) {
-              this.pushMapState(n), this.complete();
-              continue e;
-            } else
-              t = {};
-          } else if (e === 223) {
-            let n = this.readU32();
-            if (n !== 0) {
-              this.pushMapState(n), this.complete();
-              continue e;
-            } else
-              t = {};
-          } else if (e === 196) {
-            let n = this.lookU8();
-            t = this.decodeBinary(n, 1);
-          } else if (e === 197) {
-            let n = this.lookU16();
-            t = this.decodeBinary(n, 2);
-          } else if (e === 198) {
-            let n = this.lookU32();
-            t = this.decodeBinary(n, 4);
-          } else if (e === 212)
-            t = this.decodeExtension(1, 0);
-          else if (e === 213)
-            t = this.decodeExtension(2, 0);
-          else if (e === 214)
-            t = this.decodeExtension(4, 0);
-          else if (e === 215)
-            t = this.decodeExtension(8, 0);
-          else if (e === 216)
-            t = this.decodeExtension(16, 0);
-          else if (e === 199) {
-            let n = this.lookU8();
-            t = this.decodeExtension(n, 1);
-          } else if (e === 200) {
-            let n = this.lookU16();
-            t = this.decodeExtension(n, 2);
-          } else if (e === 201) {
-            let n = this.lookU32();
-            t = this.decodeExtension(n, 4);
-          } else
-            throw new $.DecodeError(`Unrecognized type byte: ${(0, Ur.prettyByte)(e)}`);
-          this.complete();
-          let s = this.stack;
-          for (; s.length > 0; ) {
-            let n = s[s.length - 1];
-            if (n.type === 0)
-              if (n.array[n.position] = t, n.position++, n.position === n.size)
-                s.pop(), t = n.array;
-              else
-                continue e;
-            else if (n.type === 1) {
-              if (!qn(t))
-                throw new $.DecodeError("The type of key must be string or number but " + typeof t);
-              if (t === "__proto__")
-                throw new $.DecodeError("The key __proto__ is not allowed");
-              n.key = t, n.type = 2;
-              continue e;
-            } else if (n.map[n.key] = t, n.readCount++, n.readCount === n.size)
-              s.pop(), t = n.map;
-            else {
-              n.key = null, n.type = 1;
-              continue e;
-            }
-          }
-          return t;
+      e: for (; ; ) {
+        let e = this.readHeadByte(), t;
+        if (e >= 224) t = e - 256;
+        else if (e < 192) if (e < 128) t = e;
+        else if (e < 144) {
+          let n = e - 128;
+          if (n !== 0) {
+            this.pushMapState(n), this.complete();
+            continue e;
+          } else t = {};
+        } else if (e < 160) {
+          let n = e - 144;
+          if (n !== 0) {
+            this.pushArrayState(n), this.complete();
+            continue e;
+          } else t = [];
+        } else {
+          let n = e - 160;
+          t = this.decodeUtf8String(n, 0);
         }
+        else if (e === 192) t = null;
+        else if (e === 194) t = false;
+        else if (e === 195) t = true;
+        else if (e === 202) t = this.readF32();
+        else if (e === 203) t = this.readF64();
+        else if (e === 204) t = this.readU8();
+        else if (e === 205) t = this.readU16();
+        else if (e === 206) t = this.readU32();
+        else if (e === 207) t = this.readU64();
+        else if (e === 208) t = this.readI8();
+        else if (e === 209) t = this.readI16();
+        else if (e === 210) t = this.readI32();
+        else if (e === 211) t = this.readI64();
+        else if (e === 217) {
+          let n = this.lookU8();
+          t = this.decodeUtf8String(n, 1);
+        } else if (e === 218) {
+          let n = this.lookU16();
+          t = this.decodeUtf8String(n, 2);
+        } else if (e === 219) {
+          let n = this.lookU32();
+          t = this.decodeUtf8String(n, 4);
+        } else if (e === 220) {
+          let n = this.readU16();
+          if (n !== 0) {
+            this.pushArrayState(n), this.complete();
+            continue e;
+          } else t = [];
+        } else if (e === 221) {
+          let n = this.readU32();
+          if (n !== 0) {
+            this.pushArrayState(n), this.complete();
+            continue e;
+          } else t = [];
+        } else if (e === 222) {
+          let n = this.readU16();
+          if (n !== 0) {
+            this.pushMapState(n), this.complete();
+            continue e;
+          } else t = {};
+        } else if (e === 223) {
+          let n = this.readU32();
+          if (n !== 0) {
+            this.pushMapState(n), this.complete();
+            continue e;
+          } else t = {};
+        } else if (e === 196) {
+          let n = this.lookU8();
+          t = this.decodeBinary(n, 1);
+        } else if (e === 197) {
+          let n = this.lookU16();
+          t = this.decodeBinary(n, 2);
+        } else if (e === 198) {
+          let n = this.lookU32();
+          t = this.decodeBinary(n, 4);
+        } else if (e === 212) t = this.decodeExtension(1, 0);
+        else if (e === 213) t = this.decodeExtension(2, 0);
+        else if (e === 214) t = this.decodeExtension(4, 0);
+        else if (e === 215) t = this.decodeExtension(8, 0);
+        else if (e === 216) t = this.decodeExtension(16, 0);
+        else if (e === 199) {
+          let n = this.lookU8();
+          t = this.decodeExtension(n, 1);
+        } else if (e === 200) {
+          let n = this.lookU16();
+          t = this.decodeExtension(n, 2);
+        } else if (e === 201) {
+          let n = this.lookU32();
+          t = this.decodeExtension(n, 4);
+        } else throw new G.DecodeError(`Unrecognized type byte: ${(0, or.prettyByte)(e)}`);
+        this.complete();
+        let s = this.stack;
+        for (; s.length > 0; ) {
+          let n = s[s.length - 1];
+          if (n.type === 0) if (n.array[n.position] = t, n.position++, n.position === n.size) s.pop(), t = n.array;
+          else continue e;
+          else if (n.type === 1) {
+            if (!rn(t)) throw new G.DecodeError("The type of key must be string or number but " + typeof t);
+            if (t === "__proto__") throw new G.DecodeError("The key __proto__ is not allowed");
+            n.key = t, n.type = 2;
+            continue e;
+          } else if (n.map[n.key] = t, n.readCount++, n.readCount === n.size) s.pop(), t = n.map;
+          else {
+            n.key = null, n.type = 1;
+            continue e;
+          }
+        }
+        return t;
+      }
     }
     readHeadByte() {
-      return this.headByte === Xe && (this.headByte = this.readU8()), this.headByte;
+      return this.headByte === Ie && (this.headByte = this.readU8()), this.headByte;
     }
     complete() {
-      this.headByte = Xe;
+      this.headByte = Ie;
     }
     readArraySize() {
       let e = this.readHeadByte();
@@ -823,45 +719,37 @@ var qt = S((K) => {
         case 221:
           return this.readU32();
         default: {
-          if (e < 160)
-            return e - 144;
-          throw new $.DecodeError(`Unrecognized array type byte: ${(0, Ur.prettyByte)(e)}`);
+          if (e < 160) return e - 144;
+          throw new G.DecodeError(`Unrecognized array type byte: ${(0, or.prettyByte)(e)}`);
         }
       }
     }
     pushMapState(e) {
-      if (e > this.maxMapLength)
-        throw new $.DecodeError(`Max length exceeded: map length (${e}) > maxMapLengthLength (${this.maxMapLength})`);
+      if (e > this.maxMapLength) throw new G.DecodeError(`Max length exceeded: map length (${e}) > maxMapLengthLength (${this.maxMapLength})`);
       this.stack.push({ type: 1, size: e, key: null, readCount: 0, map: {} });
     }
     pushArrayState(e) {
-      if (e > this.maxArrayLength)
-        throw new $.DecodeError(`Max length exceeded: array length (${e}) > maxArrayLength (${this.maxArrayLength})`);
+      if (e > this.maxArrayLength) throw new G.DecodeError(`Max length exceeded: array length (${e}) > maxArrayLength (${this.maxArrayLength})`);
       this.stack.push({ type: 0, size: e, array: new Array(e), position: 0 });
     }
     decodeUtf8String(e, t) {
       var s;
-      if (e > this.maxStrLength)
-        throw new $.DecodeError(`Max length exceeded: UTF-8 byte length (${e}) > maxStrLength (${this.maxStrLength})`);
-      if (this.bytes.byteLength < this.pos + t + e)
-        throw xs;
+      if (e > this.maxStrLength) throw new G.DecodeError(`Max length exceeded: UTF-8 byte length (${e}) > maxStrLength (${this.maxStrLength})`);
+      if (this.bytes.byteLength < this.pos + t + e) throw Jr;
       let n = this.pos + t, o;
-      return this.stateIsMapKey() && (!((s = this.keyDecoder) === null || s === void 0) && s.canBeCached(e)) ? o = this.keyDecoder.decode(this.bytes, n, e) : e > Cr.TEXT_DECODER_THRESHOLD ? o = (0, Cr.utf8DecodeTD)(this.bytes, n, e) : o = (0, Cr.utf8DecodeJs)(this.bytes, n, e), this.pos += t + e, o;
+      return this.stateIsMapKey() && (!((s = this.keyDecoder) === null || s === void 0) && s.canBeCached(e)) ? o = this.keyDecoder.decode(this.bytes, n, e) : e > ar.TEXT_DECODER_THRESHOLD ? o = (0, ar.utf8DecodeTD)(this.bytes, n, e) : o = (0, ar.utf8DecodeJs)(this.bytes, n, e), this.pos += t + e, o;
     }
     stateIsMapKey() {
       return this.stack.length > 0 ? this.stack[this.stack.length - 1].type === 1 : false;
     }
     decodeBinary(e, t) {
-      if (e > this.maxBinLength)
-        throw new $.DecodeError(`Max length exceeded: bin length (${e}) > maxBinLength (${this.maxBinLength})`);
-      if (!this.hasRemaining(e + t))
-        throw xs;
+      if (e > this.maxBinLength) throw new G.DecodeError(`Max length exceeded: bin length (${e}) > maxBinLength (${this.maxBinLength})`);
+      if (!this.hasRemaining(e + t)) throw Jr;
       let s = this.pos + t, n = this.bytes.subarray(s, s + e);
       return this.pos += t + e, n;
     }
     decodeExtension(e, t) {
-      if (e > this.maxExtLength)
-        throw new $.DecodeError(`Max length exceeded: ext length (${e}) > maxExtLength (${this.maxExtLength})`);
+      if (e > this.maxExtLength) throw new G.DecodeError(`Max length exceeded: ext length (${e}) > maxExtLength (${this.maxExtLength})`);
       let s = this.view.getInt8(this.pos + t), n = this.decodeBinary(e, t + 1);
       return this.extensionCodec.decode(n, s, this.context);
     }
@@ -899,11 +787,11 @@ var qt = S((K) => {
       return this.pos += 4, e;
     }
     readU64() {
-      let e = (0, le.getUint64)(this.view, this.pos);
+      let e = (0, oe.getUint64)(this.view, this.pos);
       return this.pos += 8, e;
     }
     readI64() {
-      let e = (0, le.getInt64)(this.view, this.pos);
+      let e = (0, oe.getInt64)(this.view, this.pos);
       return this.pos += 8, e;
     }
     readF32() {
@@ -915,355 +803,325 @@ var qt = S((K) => {
       return this.pos += 8, e;
     }
   };
-  K.Decoder = Nr;
+  $.Decoder = lr;
 });
-var Lr = S((J) => {
+var ur = T((L) => {
   "use strict";
-  Object.defineProperty(J, "__esModule", { value: true });
-  J.decodeMulti = J.decode = J.defaultDecodeOptions = void 0;
-  var vs = qt();
-  J.defaultDecodeOptions = {};
-  function Hn(r, e = J.defaultDecodeOptions) {
-    return new vs.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decode(r);
+  Object.defineProperty(L, "__esModule", { value: true });
+  L.decodeMulti = L.decode = L.defaultDecodeOptions = void 0;
+  var Hr = Tt();
+  L.defaultDecodeOptions = {};
+  function on(r5, e = L.defaultDecodeOptions) {
+    return new Hr.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decode(r5);
   }
-  J.decode = Hn;
-  function zn(r, e = J.defaultDecodeOptions) {
-    return new vs.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decodeMulti(r);
+  L.decode = on;
+  function an(r5, e = L.defaultDecodeOptions) {
+    return new Hr.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decodeMulti(r5);
   }
-  J.decodeMulti = zn;
+  L.decodeMulti = an;
 });
-var Ps = S((te) => {
+var $r = T((Y) => {
   "use strict";
-  Object.defineProperty(te, "__esModule", { value: true });
-  te.ensureAsyncIterable = te.asyncIterableFromStream = te.isAsyncIterable = void 0;
-  function Es(r) {
-    return r[Symbol.asyncIterator] != null;
+  Object.defineProperty(Y, "__esModule", { value: true });
+  Y.ensureAsyncIterable = Y.asyncIterableFromStream = Y.isAsyncIterable = void 0;
+  function zr(r5) {
+    return r5[Symbol.asyncIterator] != null;
   }
-  te.isAsyncIterable = Es;
-  function Xn(r) {
-    if (r == null)
-      throw new Error("Assertion Failure: value must not be null nor undefined");
+  Y.isAsyncIterable = zr;
+  function ln(r5) {
+    if (r5 == null) throw new Error("Assertion Failure: value must not be null nor undefined");
   }
-  async function* Ts(r) {
-    let e = r.getReader();
+  async function* Gr(r5) {
+    let e = r5.getReader();
     try {
       for (; ; ) {
         let { done: t, value: s } = await e.read();
-        if (t)
-          return;
-        Xn(s), yield s;
+        if (t) return;
+        ln(s), yield s;
       }
     } finally {
       e.releaseLock();
     }
   }
-  te.asyncIterableFromStream = Ts;
-  function Gn(r) {
-    return Es(r) ? r : Ts(r);
+  Y.asyncIterableFromStream = Gr;
+  function cn(r5) {
+    return zr(r5) ? r5 : Gr(r5);
   }
-  te.ensureAsyncIterable = Gn;
+  Y.ensureAsyncIterable = cn;
 });
-var Ss = S((H) => {
+var Kr = T((F) => {
   "use strict";
-  Object.defineProperty(H, "__esModule", { value: true });
-  H.decodeStream = H.decodeMultiStream = H.decodeArrayStream = H.decodeAsync = void 0;
-  var Fr = qt(), qr = Ps(), Vt = Lr();
-  async function $n(r, e = Vt.defaultDecodeOptions) {
-    let t = (0, qr.ensureAsyncIterable)(r);
-    return new Fr.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decodeAsync(t);
+  Object.defineProperty(F, "__esModule", { value: true });
+  F.decodeStream = F.decodeMultiStream = F.decodeArrayStream = F.decodeAsync = void 0;
+  var pr = Tt(), dr = $r(), St = ur();
+  async function un(r5, e = St.defaultDecodeOptions) {
+    let t = (0, dr.ensureAsyncIterable)(r5);
+    return new pr.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decodeAsync(t);
   }
-  H.decodeAsync = $n;
-  function Kn(r, e = Vt.defaultDecodeOptions) {
-    let t = (0, qr.ensureAsyncIterable)(r);
-    return new Fr.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decodeArrayStream(t);
+  F.decodeAsync = un;
+  function pn(r5, e = St.defaultDecodeOptions) {
+    let t = (0, dr.ensureAsyncIterable)(r5);
+    return new pr.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decodeArrayStream(t);
   }
-  H.decodeArrayStream = Kn;
-  function _s(r, e = Vt.defaultDecodeOptions) {
-    let t = (0, qr.ensureAsyncIterable)(r);
-    return new Fr.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decodeStream(t);
+  F.decodeArrayStream = pn;
+  function Xr(r5, e = St.defaultDecodeOptions) {
+    let t = (0, dr.ensureAsyncIterable)(r5);
+    return new pr.Decoder(e.extensionCodec, e.context, e.maxStrLength, e.maxBinLength, e.maxArrayLength, e.maxMapLength, e.maxExtLength).decodeStream(t);
   }
-  H.decodeMultiStream = _s;
-  function Qn(r, e = Vt.defaultDecodeOptions) {
-    return _s(r, e);
+  F.decodeMultiStream = Xr;
+  function dn(r5, e = St.defaultDecodeOptions) {
+    return Xr(r5, e);
   }
-  H.decodeStream = Qn;
+  F.decodeStream = dn;
 });
-var Ht = S((h) => {
+var Zr = T((d) => {
   "use strict";
-  Object.defineProperty(h, "__esModule", { value: true });
-  h.decodeTimestampExtension = h.encodeTimestampExtension = h.decodeTimestampToTimeSpec = h.encodeTimeSpecToTimestamp = h.encodeDateToTimeSpec = h.EXT_TIMESTAMP = h.ExtData = h.ExtensionCodec = h.Encoder = h.DataViewIndexOutOfBoundsError = h.DecodeError = h.Decoder = h.decodeStream = h.decodeMultiStream = h.decodeArrayStream = h.decodeAsync = h.decodeMulti = h.decode = h.encode = void 0;
-  var Zn = gs();
-  Object.defineProperty(h, "encode", { enumerable: true, get: function() {
-    return Zn.encode;
+  Object.defineProperty(d, "__esModule", { value: true });
+  d.decodeTimestampExtension = d.encodeTimestampExtension = d.decodeTimestampToTimeSpec = d.encodeTimeSpecToTimestamp = d.encodeDateToTimeSpec = d.EXT_TIMESTAMP = d.ExtData = d.ExtensionCodec = d.Encoder = d.DataViewIndexOutOfBoundsError = d.DecodeError = d.Decoder = d.decodeStream = d.decodeMultiStream = d.decodeArrayStream = d.decodeAsync = d.decodeMulti = d.decode = d.encode = void 0;
+  var hn = Fr();
+  Object.defineProperty(d, "encode", { enumerable: true, get: function() {
+    return hn.encode;
   } });
-  var Ms = Lr();
-  Object.defineProperty(h, "decode", { enumerable: true, get: function() {
-    return Ms.decode;
+  var Qr = ur();
+  Object.defineProperty(d, "decode", { enumerable: true, get: function() {
+    return Qr.decode;
   } });
-  Object.defineProperty(h, "decodeMulti", { enumerable: true, get: function() {
-    return Ms.decodeMulti;
+  Object.defineProperty(d, "decodeMulti", { enumerable: true, get: function() {
+    return Qr.decodeMulti;
   } });
-  var Jt = Ss();
-  Object.defineProperty(h, "decodeAsync", { enumerable: true, get: function() {
-    return Jt.decodeAsync;
+  var _t = Kr();
+  Object.defineProperty(d, "decodeAsync", { enumerable: true, get: function() {
+    return _t.decodeAsync;
   } });
-  Object.defineProperty(h, "decodeArrayStream", { enumerable: true, get: function() {
-    return Jt.decodeArrayStream;
+  Object.defineProperty(d, "decodeArrayStream", { enumerable: true, get: function() {
+    return _t.decodeArrayStream;
   } });
-  Object.defineProperty(h, "decodeMultiStream", { enumerable: true, get: function() {
-    return Jt.decodeMultiStream;
+  Object.defineProperty(d, "decodeMultiStream", { enumerable: true, get: function() {
+    return _t.decodeMultiStream;
   } });
-  Object.defineProperty(h, "decodeStream", { enumerable: true, get: function() {
-    return Jt.decodeStream;
+  Object.defineProperty(d, "decodeStream", { enumerable: true, get: function() {
+    return _t.decodeStream;
   } });
-  var Ds = qt();
-  Object.defineProperty(h, "Decoder", { enumerable: true, get: function() {
-    return Ds.Decoder;
+  var Yr = Tt();
+  Object.defineProperty(d, "Decoder", { enumerable: true, get: function() {
+    return Yr.Decoder;
   } });
-  Object.defineProperty(h, "DataViewIndexOutOfBoundsError", { enumerable: true, get: function() {
-    return Ds.DataViewIndexOutOfBoundsError;
+  Object.defineProperty(d, "DataViewIndexOutOfBoundsError", { enumerable: true, get: function() {
+    return Yr.DataViewIndexOutOfBoundsError;
   } });
-  var Yn = Ut();
-  Object.defineProperty(h, "DecodeError", { enumerable: true, get: function() {
-    return Yn.DecodeError;
+  var yn = gt();
+  Object.defineProperty(d, "DecodeError", { enumerable: true, get: function() {
+    return yn.DecodeError;
   } });
-  var eo = Ar();
-  Object.defineProperty(h, "Encoder", { enumerable: true, get: function() {
-    return eo.Encoder;
+  var fn = sr();
+  Object.defineProperty(d, "Encoder", { enumerable: true, get: function() {
+    return fn.Encoder;
   } });
-  var to = Nt();
-  Object.defineProperty(h, "ExtensionCodec", { enumerable: true, get: function() {
-    return to.ExtensionCodec;
+  var mn = xt();
+  Object.defineProperty(d, "ExtensionCodec", { enumerable: true, get: function() {
+    return mn.ExtensionCodec;
   } });
-  var ro = Dr();
-  Object.defineProperty(h, "ExtData", { enumerable: true, get: function() {
-    return ro.ExtData;
+  var Rn = Yt();
+  Object.defineProperty(d, "ExtData", { enumerable: true, get: function() {
+    return Rn.ExtData;
   } });
-  var xe = kr();
-  Object.defineProperty(h, "EXT_TIMESTAMP", { enumerable: true, get: function() {
-    return xe.EXT_TIMESTAMP;
+  var he = er();
+  Object.defineProperty(d, "EXT_TIMESTAMP", { enumerable: true, get: function() {
+    return he.EXT_TIMESTAMP;
   } });
-  Object.defineProperty(h, "encodeDateToTimeSpec", { enumerable: true, get: function() {
-    return xe.encodeDateToTimeSpec;
+  Object.defineProperty(d, "encodeDateToTimeSpec", { enumerable: true, get: function() {
+    return he.encodeDateToTimeSpec;
   } });
-  Object.defineProperty(h, "encodeTimeSpecToTimestamp", { enumerable: true, get: function() {
-    return xe.encodeTimeSpecToTimestamp;
+  Object.defineProperty(d, "encodeTimeSpecToTimestamp", { enumerable: true, get: function() {
+    return he.encodeTimeSpecToTimestamp;
   } });
-  Object.defineProperty(h, "decodeTimestampToTimeSpec", { enumerable: true, get: function() {
-    return xe.decodeTimestampToTimeSpec;
+  Object.defineProperty(d, "decodeTimestampToTimeSpec", { enumerable: true, get: function() {
+    return he.decodeTimestampToTimeSpec;
   } });
-  Object.defineProperty(h, "encodeTimestampExtension", { enumerable: true, get: function() {
-    return xe.encodeTimestampExtension;
+  Object.defineProperty(d, "encodeTimestampExtension", { enumerable: true, get: function() {
+    return he.encodeTimestampExtension;
   } });
-  Object.defineProperty(h, "decodeTimestampExtension", { enumerable: true, get: function() {
-    return xe.decodeTimestampExtension;
+  Object.defineProperty(d, "decodeTimestampExtension", { enumerable: true, get: function() {
+    return he.decodeTimestampExtension;
   } });
 });
-var A = class extends Error {
+var D = class extends Error {
   constructor(e) {
     super(e), this.name = this.constructor.name, Object.setPrototypeOf(this, new.target.prototype);
   }
 };
-var P = class extends A {
+var A = class extends D {
 };
-var m = typeof process < "u" && process.release && process.release.name === "node";
-var fr;
-if (globalThis.document)
-  fr = (r) => new Promise((e, t) => {
-    let s = document.createElement("script");
-    s.src = r, s.onload = () => e(), s.onerror = t, document.head.appendChild(s);
-  });
-else if (globalThis.importScripts)
-  fr = async (r) => {
-    try {
-      globalThis.importScripts(r);
-    } catch (e) {
-      if (e instanceof TypeError)
-        await Promise.resolve().then(() => ne(N(r)));
-      else
-        throw e;
-    }
-  };
-else if (m)
-  fr = async (r) => {
-    let e = (await Promise.resolve().then(() => ne(N("path")))).default;
-    await Promise.resolve().then(() => ne(N(e.resolve(r))));
-  };
-else
-  throw new A("Cannot determine runtime environment");
+var E = typeof process < "u" && process.release && process.release.name === "node";
+var Vt;
+if (globalThis.document) Vt = (r5) => new Promise((e, t) => {
+  let s = document.createElement("script");
+  s.src = r5, s.onload = () => e(), s.onerror = t, document.head.appendChild(s);
+});
+else if (globalThis.importScripts) Vt = async (r5) => {
+  try {
+    globalThis.importScripts(r5);
+  } catch (e) {
+    if (e instanceof TypeError) await Promise.resolve().then(() => be(ee(r5)));
+    else throw e;
+  }
+};
+else if (E) Vt = async (r5) => {
+  let e = (await Promise.resolve().then(() => be(ee("path")))).default;
+  await Promise.resolve().then(() => be(ee(e.resolve(r5))));
+};
+else throw new D("Cannot determine runtime environment");
+var U = { null: 0, symbol: 1, pairlist: 2, closure: 3, environment: 4, promise: 5, call: 6, special: 7, builtin: 8, string: 9, logical: 10, integer: 13, double: 14, complex: 15, character: 16, dots: 17, any: 18, list: 19, expression: 20, bytecode: 21, pointer: 22, weakref: 23, raw: 24, s4: 25, new: 30, free: 31, function: 99 };
+function we(r5) {
+  return !!r5 && typeof r5 == "object" && Object.keys(U).includes(r5.type);
+}
+function te(r5) {
+  return !!r5 && typeof r5 == "object" && "re" in r5 && "im" in r5;
+}
 var l = {};
-function Yr(r) {
-  Object.keys(r).forEach((e) => l._free(r[e]));
+function wr(r5) {
+  Object.keys(r5).forEach((e) => l._free(r5[e]));
 }
-var j = { null: 0, symbol: 1, pairlist: 2, closure: 3, environment: 4, promise: 5, call: 6, special: 7, builtin: 8, string: 9, logical: 10, integer: 13, double: 14, complex: 15, character: 16, dots: 17, any: 18, list: 19, expression: 20, bytecode: 21, pointer: 22, weakref: 23, raw: 24, s4: 25, new: 30, free: 31, function: 99 };
-function Rr(r) {
-  return !!r && typeof r == "object" && Object.keys(j).includes(r.type);
+function xe(r5) {
+  return l._Rf_protect(N(r5)), r5;
 }
-function Ue(r) {
-  return !!r && typeof r == "object" && "re" in r && "im" in r;
+function b(r5, e) {
+  return l._Rf_protect(N(r5)), ++e.n, r5;
 }
-function Ce(r) {
-  return l._Rf_protect(B(r)), r;
-}
-function w(r, e) {
-  return l._Rf_protect(B(r)), ++e.n, r;
-}
-function es(r) {
+function xr(r5) {
   let e = l._malloc(4);
-  return l._R_ProtectWithIndex(B(r), e), { loc: l.getValue(e, "i32"), ptr: e };
+  return l._R_ProtectWithIndex(N(r5), e), { loc: l.getValue(e, "i32"), ptr: e };
 }
-function ts(r) {
-  l._Rf_unprotect(1), l._free(r.ptr);
+function Er(r5) {
+  l._Rf_unprotect(1), l._free(r5.ptr);
 }
-function rs(r, e) {
-  return l._R_Reprotect(B(r), e.loc), r;
+function vr(r5, e) {
+  return l._R_Reprotect(N(r5), e.loc), r5;
 }
-function T(r) {
-  l._Rf_unprotect(r);
+function v(r5) {
+  l._Rf_unprotect(r5);
 }
-function mr(r, e, t) {
-  l._Rf_defineVar(B(e), B(t), B(r));
+function Jt(r5, e, t) {
+  l._Rf_defineVar(N(e), N(t), N(r5));
 }
-function gr(r, e) {
+function Ht(r5, e) {
   let t = {}, s = { n: 0 };
   try {
-    let n = new Ne(e);
-    w(n, s), t.code = l.allocateUTF8(r);
+    let n = new ve(e);
+    b(n, s), t.code = l.allocateUTF8(r5);
     let o = l._R_ParseEvalString(t.code, n.ptr);
-    return y.wrap(o);
+    return h.wrap(o);
   } finally {
-    Yr(t), T(s.n);
+    wr(t), v(s.n);
   }
 }
-function je(r, e) {
-  return l.getWasmTableEntry(l.GOT.ffi_safe_eval.value)(B(r), B(e));
+function Ee(r5, e) {
+  return l.getWasmTableEntry(l.GOT.ffi_safe_eval.value)(N(r5), N(e));
 }
-var ln = /* @__PURE__ */ new WeakMap();
-function ss(r, e) {
-  return ln.set(r, e), r;
+function N(r5) {
+  return Ye(r5) ? r5.ptr : r5;
 }
-function B(r) {
-  return Tt(r) ? r.ptr : r;
+function ne(r5, e) {
+  if (l._TYPEOF(r5.ptr) !== U[e]) throw new Error(`Unexpected object type "${r5.type()}" when expecting type "${e}"`);
 }
-function ie(r, e) {
-  if (l._TYPEOF(r.ptr) !== j[e])
-    throw new Error(`Unexpected object type "${r.type()}" when expecting type "${e}"`);
+function Sr(r5) {
+  if (we(r5)) return new (_r(r5.type))(r5);
+  if (typeof r5 > "u") return new Te();
+  if (r5 && typeof r5 == "object" && "type" in r5 && r5.type === "null") return new Te();
+  if (r5 === null) return new se({ type: "logical", names: null, values: [null] });
+  if (typeof r5 == "boolean") return new se(r5);
+  if (typeof r5 == "number") return new We(r5);
+  if (typeof r5 == "string") return new z(r5);
+  if (te(r5)) return new Ke(r5);
+  if (ArrayBuffer.isView(r5) || r5 instanceof ArrayBuffer) return new Qe(r5);
+  if (Array.isArray(r5)) return Ts(r5);
+  if (typeof r5 == "object") return ke.fromObject(r5);
+  throw new Error("R object construction for this JS object is not yet supported.");
 }
-function ns(r) {
-  if (Rr(r))
-    return new (os(r.type))(r);
-  if (r && typeof r == "object" && "type" in r && r.type === "null")
-    return new Et();
-  if (r === null)
-    return new Z({ type: "logical", names: null, values: [null] });
-  if (typeof r == "boolean")
-    return new Z(r);
-  if (typeof r == "number")
-    return new ye(r);
-  if (typeof r == "string")
-    return new L(r);
-  if (Ue(r))
-    return new Be(r);
-  if (ArrayBuffer.isView(r) || r instanceof ArrayBuffer)
-    return new Le(r);
-  if (Array.isArray(r))
-    return pn(r);
-  if (typeof r == "object")
-    return Y.fromObject(r);
-  throw new Error("Robj construction for this JS object is not yet supported");
-}
-function pn(r) {
+function Ts(r5) {
   let e = { n: 0 };
-  if (r.every((s) => s && typeof s == "object" && !Tt(s) && !Ue(s))) {
-    let s = r, n = s.every((i) => Object.keys(i).filter((c) => !Object.keys(s[0]).includes(c)).length === 0 && Object.keys(s[0]).filter((c) => !Object.keys(i).includes(c)).length === 0), o = s.every((i) => Object.values(i).every((c) => is(c) || as(c)));
-    if (n && o)
-      return Y.fromD3(s);
+  if (r5.every((s) => s && typeof s == "object" && !Ye(s) && !te(s))) {
+    let s = r5, n = s.every((a) => Object.keys(a).filter((c) => !Object.keys(s[0]).includes(c)).length === 0 && Object.keys(s[0]).filter((c) => !Object.keys(a).includes(c)).length === 0), o = s.every((a) => Object.values(a).every((c) => Mr(c) || kr(c)));
+    if (n && o) return ke.fromD3(s);
   }
-  if (r.every((s) => typeof s == "boolean" || s === null))
-    return new Z(r);
-  if (r.every((s) => typeof s == "number" || s === null))
-    return new ye(r);
-  if (r.every((s) => typeof s == "string" || s === null))
-    return new L(r);
+  if (r5.every((s) => typeof s == "boolean" || s === null)) return new se(r5);
+  if (r5.every((s) => typeof s == "number" || s === null)) return new We(r5);
+  if (r5.every((s) => typeof s == "string" || s === null)) return new z(r5);
   try {
-    let s = new F([new I("c"), ...r]);
-    return w(s, e), s.eval();
+    let s = new K([new C("c"), ...r5]);
+    return b(s, e), s.eval();
   } finally {
-    T(e.n);
+    v(e.n);
   }
 }
-var x = class {
+var w = class {
   constructor(e) {
     this.ptr = e;
   }
   type() {
     let e = l._TYPEOF(this.ptr);
-    return Object.keys(j).find((s) => j[s] === e);
+    return Object.keys(U).find((s) => U[s] === e);
   }
 };
-var fe;
-var xt;
-var oe = class extends x {
+var ce;
+var Xe;
+var re = class re2 extends w {
   constructor(t) {
-    if (!(t instanceof x))
-      return ns(t);
+    if (!(t instanceof w)) return Sr(t);
     super(t.ptr);
-    u(this, fe);
+    p(this, ce);
   }
   static wrap(t) {
-    let s = l._TYPEOF(t), n = Object.keys(j)[Object.values(j).indexOf(s)];
-    return new (os(n))(new x(t));
+    let s = l._TYPEOF(t), n = Object.keys(U)[Object.values(U).indexOf(s)];
+    return new (_r(n))(new w(t));
   }
   get [Symbol.toStringTag]() {
     return `RObject:${this.type()}`;
   }
   static getPersistentObject(t) {
-    return M[t];
+    return S[t];
   }
   getPropertyValue(t) {
     return this[t];
   }
   inspect() {
-    gr(".Internal(inspect(x))", { x: this });
+    Ht(".Internal(inspect(x))", { x: this });
   }
   isNull() {
-    return l._TYPEOF(this.ptr) === j.null;
+    return l._TYPEOF(this.ptr) === U.null;
   }
   isNa() {
     try {
-      let t = gr("is.na(x)", { x: this });
-      return Ce(t), t.toBoolean();
+      let t = Ht("is.na(x)", { x: this });
+      return xe(t), t.toBoolean();
     } finally {
-      T(1);
+      v(1);
     }
   }
   isUnbound() {
-    return this.ptr === M.unboundValue.ptr;
+    return this.ptr === S.unboundValue.ptr;
   }
   attrs() {
-    return ae.wrap(l._ATTRIB(this.ptr));
+    return Se.wrap(l._ATTRIB(this.ptr));
   }
   class() {
-    let t = { n: 0 }, s = new F([new I("class"), this]);
-    w(s, t);
+    let t = { n: 0 }, s = new K([new C("class"), this]);
+    b(s, t);
     try {
       return s.eval();
     } finally {
-      T(t.n);
+      v(t.n);
     }
   }
   setNames(t) {
     let s;
-    if (t === null)
-      s = M.null;
-    else if (Array.isArray(t) && t.every((n) => typeof n == "string" || n === null))
-      s = new L(t);
-    else
-      throw new Error("Argument to setNames must be null or an Array of strings or null");
-    return l._Rf_setAttrib(this.ptr, M.namesSymbol.ptr, s.ptr), this;
+    if (t === null) s = S.null;
+    else if (Array.isArray(t) && t.every((n) => typeof n == "string" || n === null)) s = new z(t);
+    else throw new Error("Argument to setNames must be null or an Array of strings or null");
+    return l._Rf_setAttrib(this.ptr, S.namesSymbol.ptr, s.ptr), this;
   }
   names() {
-    let t = L.wrap(l._Rf_getAttrib(this.ptr, M.namesSymbol.ptr));
+    let t = z.wrap(l._Rf_getAttrib(this.ptr, S.namesSymbol.ptr));
     return t.isNull() ? null : t.toArray();
   }
   includes(t) {
@@ -1274,37 +1132,37 @@ var oe = class extends x {
     throw new Error("This R object cannot be converted to JS");
   }
   subset(t) {
-    return E(this, fe, xt).call(this, t, M.bracketSymbol.ptr);
+    return M(this, ce, Xe).call(this, t, S.bracketSymbol.ptr);
   }
   get(t) {
-    return E(this, fe, xt).call(this, t, M.bracket2Symbol.ptr);
+    return M(this, ce, Xe).call(this, t, S.bracket2Symbol.ptr);
   }
   getDollar(t) {
-    return E(this, fe, xt).call(this, t, M.dollarSymbol.ptr);
+    return M(this, ce, Xe).call(this, t, S.dollarSymbol.ptr);
   }
   pluck(...t) {
-    let s = es(M.null);
+    let s = xr(S.null);
     try {
-      let n = (i, c) => {
-        let p = i.get(c);
-        return rs(p, s);
+      let n = (a, c) => {
+        let u = a.get(c);
+        return vr(u, s);
       }, o = t.reduce(n, this);
       return o.isNull() ? void 0 : o;
     } finally {
-      ts(s);
+      Er(s);
     }
   }
   set(t, s) {
     let n = { n: 0 };
     try {
-      let o = new oe(t);
-      w(o, n);
-      let i = new oe(s);
-      w(i, n);
-      let c = new I("[[<-"), p = l._Rf_lang4(c.ptr, this.ptr, o.ptr, i.ptr);
-      return w(p, n), oe.wrap(je(p, M.baseEnv));
+      let o = new re2(t);
+      b(o, n);
+      let a = new re2(s);
+      b(a, n);
+      let c = new C("[[<-"), u = l._Rf_lang4(c.ptr, this.ptr, o.ptr, a.ptr);
+      return b(u, n), re2.wrap(Ee(u, S.baseEnv));
     } finally {
-      T(n.n);
+      v(n.n);
     }
   }
   static getMethods(t) {
@@ -1315,35 +1173,35 @@ var oe = class extends x {
     return [...s.keys()].filter((o) => typeof t[o] == "function");
   }
 };
-var y = oe;
-fe = /* @__PURE__ */ new WeakSet(), xt = function(t, s) {
+ce = /* @__PURE__ */ new WeakSet(), Xe = function(t, s) {
   let n = { n: 0 };
   try {
-    let o = new oe(t);
-    w(o, n);
-    let i = l._Rf_lang3(s, this.ptr, o.ptr);
-    return w(i, n), oe.wrap(je(i, M.baseEnv));
+    let o = new re(t);
+    b(o, n);
+    let a = l._Rf_lang3(s, this.ptr, o.ptr);
+    return b(a, n), re.wrap(Ee(a, S.baseEnv));
   } finally {
-    T(n.n);
+    v(n.n);
   }
 };
-var Et = class extends y {
+var h = re;
+var Te = class extends h {
   constructor() {
-    return super(new x(l.getValue(l._R_NilValue, "*"))), this;
+    return super(new w(l.getValue(l._R_NilValue, "*"))), this;
   }
   toJs() {
     return { type: "null" };
   }
 };
-var I = class extends y {
+var C = class extends h {
   constructor(e) {
-    if (e instanceof x) {
-      ie(e, "symbol"), super(e);
+    if (e instanceof w) {
+      ne(e, "symbol"), super(e);
       return;
     }
     let t = l.allocateUTF8(e);
     try {
-      super(new x(l._Rf_install(t)));
+      super(new w(l._Rf_install(t)));
     } finally {
       l._free(t);
     }
@@ -1359,28 +1217,26 @@ var I = class extends y {
     return this.printname().toString();
   }
   printname() {
-    return qe.wrap(l._PRINTNAME(this.ptr));
+    return Me.wrap(l._PRINTNAME(this.ptr));
   }
   symvalue() {
-    return y.wrap(l._SYMVALUE(this.ptr));
+    return h.wrap(l._SYMVALUE(this.ptr));
   }
   internal() {
-    return y.wrap(l._INTERNAL(this.ptr));
+    return h.wrap(l._INTERNAL(this.ptr));
   }
 };
-var ae = class extends y {
+var Se = class r extends h {
   constructor(e) {
-    if (e instanceof x)
-      return ie(e, "pairlist"), super(e), this;
+    if (e instanceof w) return ne(e, "pairlist"), super(e), this;
     let t = { n: 0 };
     try {
-      let { names: s, values: n } = Re(e), o = ae.wrap(l._Rf_allocList(n.length));
-      w(o, t);
-      for (let [i, c] = [0, o]; !c.isNull(); [i, c] = [i + 1, c.cdr()])
-        c.setcar(new y(n[i]));
+      let { names: s, values: n } = ue(e), o = r.wrap(l._Rf_allocList(n.length));
+      b(o, t);
+      for (let [a, c] = [0, o]; !c.isNull(); [a, c] = [a + 1, c.cdr()]) c.setcar(new h(n[a]));
       o.setNames(s), super(o);
     } finally {
-      T(t.n);
+      v(t.n);
     }
   }
   get length() {
@@ -1390,12 +1246,10 @@ var ae = class extends y {
     return this.toJs(e).values;
   }
   toObject({ allowDuplicateKey: e = true, allowEmptyKey: t = false, depth: s = -1 } = {}) {
-    let n = this.entries({ depth: s }), o = n.map(([i]) => i);
-    if (!e && new Set(o).size !== o.length)
-      throw new Error("Duplicate key when converting pairlist without allowDuplicateKey enabled");
-    if (!t && o.some((i) => !i))
-      throw new Error("Empty or null key when converting pairlist without allowEmptyKey enabled");
-    return Object.fromEntries(n.filter((i, c) => n.findIndex((p) => p[0] === i[0]) === c));
+    let n = this.entries({ depth: s }), o = n.map(([a]) => a);
+    if (!e && new Set(o).size !== o.length) throw new Error("Duplicate key when converting pairlist without allowDuplicateKey enabled");
+    if (!t && o.some((a) => !a)) throw new Error("Empty or null key when converting pairlist without allowEmptyKey enabled");
+    return Object.fromEntries(n.filter((a, c) => n.findIndex((u) => u[0] === a[0]) === c));
   }
   entries(e = { depth: 1 }) {
     let t = this.toJs(e);
@@ -1404,8 +1258,8 @@ var ae = class extends y {
   toJs(e = { depth: 0 }, t = 1) {
     let s = [], n = false, o = [];
     for (let c = this; !c.isNull(); c = c.cdr()) {
-      let p = c.tag();
-      p.isNull() ? s.push("") : (n = true, s.push(p.toString())), e.depth && t >= e.depth ? o.push(c.car()) : o.push(c.car().toJs(e, t + 1));
+      let u = c.tag();
+      u.isNull() ? s.push("") : (n = true, s.push(u.toString())), e.depth && t >= e.depth ? o.push(c.car()) : o.push(c.car().toJs(e, t + 1));
     }
     return { type: "pairlist", names: n ? s : null, values: o };
   }
@@ -1416,41 +1270,39 @@ var ae = class extends y {
     l._SETCAR(this.ptr, e.ptr);
   }
   car() {
-    return y.wrap(l._CAR(this.ptr));
+    return h.wrap(l._CAR(this.ptr));
   }
   cdr() {
-    return y.wrap(l._CDR(this.ptr));
+    return h.wrap(l._CDR(this.ptr));
   }
   tag() {
-    return y.wrap(l._TAG(this.ptr));
+    return h.wrap(l._TAG(this.ptr));
   }
 };
-var F = class extends y {
+var K = class r2 extends h {
   constructor(e) {
-    if (e instanceof x)
-      return ie(e, "call"), super(e), this;
+    if (e instanceof w) return ne(e, "call"), super(e), this;
     let t = { n: 0 };
     try {
-      let { values: s } = Re(e), n = s.map((i) => w(new y(i), t)), o = F.wrap(l._Rf_allocVector(j.call, s.length));
-      w(o, t);
-      for (let [i, c] = [0, o]; !c.isNull(); [i, c] = [i + 1, c.cdr()])
-        c.setcar(n[i]);
+      let { values: s } = ue(e), n = s.map((a) => b(new h(a), t)), o = r2.wrap(l._Rf_allocVector(U.call, s.length));
+      b(o, t);
+      for (let [a, c] = [0, o]; !c.isNull(); [a, c] = [a + 1, c.cdr()]) c.setcar(n[a]);
       super(o);
     } finally {
-      T(t.n);
+      v(t.n);
     }
   }
   setcar(e) {
     l._SETCAR(this.ptr, e.ptr);
   }
   car() {
-    return y.wrap(l._CAR(this.ptr));
+    return h.wrap(l._CAR(this.ptr));
   }
   cdr() {
-    return y.wrap(l._CDR(this.ptr));
+    return h.wrap(l._CDR(this.ptr));
   }
   eval() {
-    return l.webr.evalR(this, { env: M.baseEnv });
+    return l.webr.evalR(this, { env: S.baseEnv });
   }
   capture(e = {}) {
     return l.webr.captureR(this, e);
@@ -1458,60 +1310,55 @@ var F = class extends y {
   deparse() {
     let e = { n: 0 };
     try {
-      let t = l._Rf_lang2(new I("deparse1").ptr, l._Rf_lang2(new I("quote").ptr, this.ptr));
-      w(t, e);
-      let s = L.wrap(je(t, M.baseEnv));
-      return w(s, e), s.toString();
+      let t = l._Rf_lang2(new C("deparse1").ptr, l._Rf_lang2(new C("quote").ptr, this.ptr));
+      b(t, e);
+      let s = z.wrap(Ee(t, S.baseEnv));
+      return b(s, e), s.toString();
     } finally {
-      T(e.n);
+      v(e.n);
     }
   }
 };
-var Fe = class extends y {
+var _e = class r3 extends h {
   constructor(e, t = null) {
-    if (e instanceof x) {
-      if (ie(e, "list"), super(e), t) {
-        if (t.length !== this.length)
-          throw new Error("Can't construct named `RList`. Supplied `names` must be the same length as the list.");
+    if (e instanceof w) {
+      if (ne(e, "list"), super(e), t) {
+        if (t.length !== this.length) throw new Error("Can't construct named `RList`. Supplied `names` must be the same length as the list.");
         this.setNames(t);
       }
       return this;
     }
     let s = { n: 0 };
     try {
-      let n = Re(e), o = l._Rf_allocVector(j.list, n.values.length);
-      w(o, s), n.values.forEach((c, p) => {
-        l._SET_VECTOR_ELT(o, p, new y(c).ptr);
+      let n = ue(e), o = l._Rf_allocVector(U.list, n.values.length);
+      b(o, s), n.values.forEach((c, u) => {
+        Wr(c) ? l._SET_VECTOR_ELT(o, u, new r3(c).ptr) : l._SET_VECTOR_ELT(o, u, new h(c).ptr);
       });
-      let i = t || n.names;
-      if (i && i.length !== n.values.length)
-        throw new Error("Can't construct named `RList`. Supplied `names` must be the same length as the list.");
-      y.wrap(o).setNames(i), super(new x(o));
+      let a = t || n.names;
+      if (a && a.length !== n.values.length) throw new Error("Can't construct named `RList`. Supplied `names` must be the same length as the list.");
+      h.wrap(o).setNames(a), super(new w(o));
     } finally {
-      T(s.n);
+      v(s.n);
     }
   }
   get length() {
     return l._LENGTH(this.ptr);
   }
   isDataFrame() {
-    let e = ae.wrap(l._ATTRIB(this.ptr)).get("class");
+    let e = Se.wrap(l._ATTRIB(this.ptr)).get("class");
     return !e.isNull() && e.toArray().includes("data.frame");
   }
   toArray(e = { depth: 1 }) {
     return this.toJs(e).values;
   }
   toObject({ allowDuplicateKey: e = true, allowEmptyKey: t = false, depth: s = -1 } = {}) {
-    let n = this.entries({ depth: s }), o = n.map(([i]) => i);
-    if (!e && new Set(o).size !== o.length)
-      throw new Error("Duplicate key when converting list without allowDuplicateKey enabled");
-    if (!t && o.some((i) => !i))
-      throw new Error("Empty or null key when converting list without allowEmptyKey enabled");
-    return Object.fromEntries(n.filter((i, c) => n.findIndex((p) => p[0] === i[0]) === c));
+    let n = this.entries({ depth: s }), o = n.map(([a]) => a);
+    if (!e && new Set(o).size !== o.length) throw new Error("Duplicate key when converting list without allowDuplicateKey enabled");
+    if (!t && o.some((a) => !a)) throw new Error("Empty or null key when converting list without allowEmptyKey enabled");
+    return Object.fromEntries(n.filter((a, c) => n.findIndex((u) => u[0] === a[0]) === c));
   }
   toD3() {
-    if (!this.isDataFrame())
-      throw new Error("Can't convert R list object to D3 format. Object must be of class 'data.frame'.");
+    if (!this.isDataFrame()) throw new Error("Can't convert R list object to D3 format. Object must be of class 'data.frame'.");
     return this.entries().reduce((t, s) => (s[1].forEach((n, o) => t[o] = Object.assign(t[o] || {}, { [s[0]]: n })), t), []);
   }
   entries(e = { depth: -1 }) {
@@ -1522,30 +1369,29 @@ var Fe = class extends y {
     return { type: "list", names: this.names(), values: [...Array(this.length).keys()].map((s) => e.depth && t >= e.depth ? this.get(s + 1) : this.get(s + 1).toJs(e, t + 1)) };
   }
 };
-var Y = class extends Fe {
+var ke = class r4 extends _e {
   constructor(e) {
-    if (e instanceof x) {
-      if (super(e), !this.isDataFrame())
-        throw new Error("Can't construct `RDataFrame`. Supplied R object is not a `data.frame`.");
+    if (e instanceof w) {
+      if (super(e), !this.isDataFrame()) throw new Error("Can't construct `RDataFrame`. Supplied R object is not a `data.frame`.");
       return this;
     }
-    return Y.fromObject(e);
+    return r4.fromObject(e);
   }
   static fromObject(e) {
-    let { names: t, values: s } = Re(e), n = { n: 0 };
+    let { names: t, values: s } = ue(e), n = { n: 0 };
     try {
-      let o = !!t && t.length > 0 && t.every((c) => c), i = s.length > 0 && s.every((c) => Array.isArray(c) || ArrayBuffer.isView(c) || c instanceof ArrayBuffer);
-      if (o && i) {
-        let c = s, p = c.every((b) => b.length === c[0].length), k = c.every((b) => is(b[0]) || as(b[0]));
-        if (p && k) {
-          let b = new Fe({ type: "list", names: t, values: c.map((en) => ns(en)) });
-          w(b, n);
-          let C = new F([new I("as.data.frame"), b]);
-          return w(C, n), new Y(C.eval());
+      let o = !!t && t.length > 0 && t.every((c) => c), a = s.length > 0 && s.every((c) => Array.isArray(c) || ArrayBuffer.isView(c) || c instanceof ArrayBuffer);
+      if (o && a) {
+        let c = s, u = c.every((g) => g.length === c[0].length), k = c.every((g) => Mr(g[0]) || kr(g[0]));
+        if (u && k) {
+          let g = new _e({ type: "list", names: t, values: c.map((ms) => Sr(ms)) });
+          b(g, n);
+          let H = new K([new C("as.data.frame"), g]);
+          return b(H, n), new r4(H.eval());
         }
       }
     } finally {
-      T(n.n);
+      v(n.n);
     }
     throw new Error("Can't construct `data.frame`. Source object is not eligible.");
   }
@@ -1553,88 +1399,92 @@ var Y = class extends Fe {
     return this.fromObject(Object.fromEntries(Object.keys(e[0]).map((t) => [t, e.map((s) => s[t])])));
   }
 };
-var he = class extends y {
+var le = class extends h {
   exec(...e) {
     let t = { n: 0 };
     try {
-      let s = new F([this, ...e]);
-      return w(s, t), s.eval();
+      let s = new K([this, ...e]);
+      return b(s, t), s.eval();
     } finally {
-      T(t.n);
+      v(t.n);
     }
   }
   capture(e = {}, ...t) {
     let s = { n: 0 };
     try {
-      let n = new F([this, ...t]);
-      return w(n, s), n.capture(e);
+      let n = new K([this, ...t]);
+      return b(n, s), n.capture(e);
     } finally {
-      T(s.n);
+      v(s.n);
     }
   }
 };
-var qe = class extends y {
+var Ze = class Ze2 extends h {
   constructor(e) {
-    if (e instanceof x) {
-      ie(e, "string"), super(e);
+    if (e instanceof w) {
+      ne(e, "string"), super(e);
       return;
     }
     let t = l.allocateUTF8(e);
     try {
-      super(new x(l._Rf_mkChar(t)));
+      super(new w(l._Rf_mkCharCE(t, Ze2.CEType.CE_UTF8)));
     } finally {
       l._free(t);
     }
   }
   toString() {
-    return l.UTF8ToString(l._R_CHAR(this.ptr));
+    let e = l._vmaxget();
+    try {
+      return l.UTF8ToString(l._Rf_translateCharUTF8(this.ptr));
+    } finally {
+      l._vmaxset(e);
+    }
   }
   toJs() {
     return { type: "string", value: this.toString() };
   }
 };
-var Ne = class extends y {
+Ze.CEType = { CE_NATIVE: 0, CE_UTF8: 1, CE_LATIN1: 2, CE_BYTES: 3, CE_SYMBOL: 5, CE_ANY: 99 };
+var Me = Ze;
+var ve = class extends h {
   constructor(e = {}) {
-    if (e instanceof x)
-      return ie(e, "environment"), super(e), this;
+    if (e instanceof w) return ne(e, "environment"), super(e), this;
     let t = 0;
     try {
-      let { names: s, values: n } = Re(e), o = Ce(l._R_NewEnv(M.globalEnv.ptr, 0, 0));
-      ++t, n.forEach((i, c) => {
-        let p = s ? s[c] : null;
-        if (!p)
-          throw new Error("Can't create object in new environment with empty symbol name");
-        let k = new I(p), b = Ce(new y(i));
+      let { names: s, values: n } = ue(e), o = xe(l._R_NewEnv(S.globalEnv.ptr, 0, 0));
+      ++t, n.forEach((a, c) => {
+        let u = s ? s[c] : null;
+        if (!u) throw new Error("Can't create object in new environment with empty symbol name");
+        let k = new C(u), g = xe(new h(a));
         try {
-          mr(o, k, b);
+          Jt(o, k, g);
         } finally {
-          T(1);
+          v(1);
         }
-      }), super(new x(o));
+      }), super(new w(o));
     } finally {
-      T(t);
+      v(t);
     }
   }
   ls(e = false, t = true) {
-    return L.wrap(l._R_lsInternal3(this.ptr, Number(e), Number(t))).toArray();
+    return z.wrap(l._R_lsInternal3(this.ptr, Number(e), Number(t))).toArray();
   }
   bind(e, t) {
-    let s = new I(e), n = Ce(new y(t));
+    let s = new C(e), n = xe(new h(t));
     try {
-      mr(this, s, n);
+      Jt(this, s, n);
     } finally {
-      T(1);
+      v(1);
     }
   }
   names() {
     return this.ls(true, true);
   }
   frame() {
-    return y.wrap(l._FRAME(this.ptr));
+    return h.wrap(l._FRAME(this.ptr));
   }
   subset(e) {
-    if (typeof e == "number")
-      throw new Error("Object of type environment is not subsettable");
+    if (typeof e == "number") throw new Error("Object of type environment is not subsettable");
     return this.getDollar(e);
   }
   toObject({ depth: e = -1 } = {}) {
@@ -1649,16 +1499,15 @@ var Ne = class extends y {
     return { type: "environment", names: s, values: n };
   }
 };
-var ee = class extends y {
+var Q = class extends h {
   constructor(e, t, s) {
-    if (e instanceof x)
-      return ie(e, t), super(e), this;
+    if (e instanceof w) return ne(e, t), super(e), this;
     let n = { n: 0 };
     try {
-      let { names: o, values: i } = Re(e), c = l._Rf_allocVector(j[t], i.length);
-      w(c, n), i.forEach(s(c)), y.wrap(c).setNames(o), super(new x(c));
+      let { names: o, values: a } = ue(e), c = l._Rf_allocVector(U[t], a.length);
+      b(c, n), a.forEach(s(c)), h.wrap(c).setNames(o), super(new w(c));
     } finally {
-      T(n.n);
+      v(n.n);
     }
   }
   get length() {
@@ -1676,14 +1525,14 @@ var ee = class extends y {
   detectMissing() {
     let e = { n: 0 };
     try {
-      let t = l._Rf_lang2(new I("is.na").ptr, this.ptr);
-      w(t, e);
-      let s = Z.wrap(je(t, M.baseEnv));
-      w(s, e);
+      let t = l._Rf_lang2(new C("is.na").ptr, this.ptr);
+      b(t, e);
+      let s = se.wrap(Ee(t, S.baseEnv));
+      b(s, e);
       let n = s.toTypedArray();
       return Array.from(n).map((o) => !!o);
     } finally {
-      T(e.n);
+      v(e.n);
     }
   }
   toArray() {
@@ -1692,11 +1541,9 @@ var ee = class extends y {
   }
   toObject({ allowDuplicateKey: e = true, allowEmptyKey: t = false } = {}) {
     let s = this.entries(), n = s.map(([o]) => o);
-    if (!e && new Set(n).size !== n.length)
-      throw new Error("Duplicate key when converting atomic vector without allowDuplicateKey enabled");
-    if (!t && n.some((o) => !o))
-      throw new Error("Empty or null key when converting atomic vector without allowEmptyKey enabled");
-    return Object.fromEntries(s.filter((o, i) => s.findIndex((c) => c[0] === o[0]) === i));
+    if (!e && new Set(n).size !== n.length) throw new Error("Duplicate key when converting atomic vector without allowDuplicateKey enabled");
+    if (!t && n.some((o) => !o)) throw new Error("Empty or null key when converting atomic vector without allowEmptyKey enabled");
+    return Object.fromEntries(s.filter((o, a) => s.findIndex((c) => c[0] === o[0]) === a));
   }
   entries() {
     let e = this.toArray(), t = this.names();
@@ -1706,20 +1553,18 @@ var ee = class extends y {
     return { type: this.type(), names: this.names(), values: this.toArray() };
   }
 };
-var Pt;
-var br = class extends ee {
+var et;
+var tt = class tt2 extends Q {
   constructor(e) {
-    super(e, "logical", a(br, Pt));
+    super(e, "logical", i(tt2, et));
   }
   getBoolean(e) {
     return this.get(e).toArray()[0];
   }
   toBoolean() {
-    if (this.length !== 1)
-      throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
+    if (this.length !== 1) throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
     let e = this.getBoolean(1);
-    if (e === null)
-      throw new Error("Can't convert missing value `NA` to a JS boolean");
+    if (e === null) throw new Error("Can't convert missing value `NA` to a JS boolean");
     return e;
   }
   toTypedArray() {
@@ -1730,81 +1575,75 @@ var br = class extends ee {
     return this.detectMissing().map((t, s) => t ? null : !!e[s]);
   }
 };
-var Z = br;
-Pt = /* @__PURE__ */ new WeakMap(), u(Z, Pt, (e) => {
+et = /* @__PURE__ */ new WeakMap(), p(tt, et, (e) => {
   let t = l._LOGICAL(e), s = l.getValue(l._R_NaInt, "i32");
   return (n, o) => {
     l.setValue(t + 4 * o, n === null ? s : !!n, "i32");
   };
 });
-var _t;
-var wr = class extends ee {
+var se = tt;
+var rt;
+var st = class st2 extends Q {
   constructor(e) {
-    super(e, "integer", a(wr, _t));
+    super(e, "integer", i(st2, rt));
   }
   getNumber(e) {
     return this.get(e).toArray()[0];
   }
   toNumber() {
-    if (this.length !== 1)
-      throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
+    if (this.length !== 1) throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
     let e = this.getNumber(1);
-    if (e === null)
-      throw new Error("Can't convert missing value `NA` to a JS number");
+    if (e === null) throw new Error("Can't convert missing value `NA` to a JS number");
     return e;
   }
   toTypedArray() {
     return new Int32Array(l.HEAP32.subarray(l._INTEGER(this.ptr) / 4, l._INTEGER(this.ptr) / 4 + this.length));
   }
 };
-var vt = wr;
-_t = /* @__PURE__ */ new WeakMap(), u(vt, _t, (e) => {
+rt = /* @__PURE__ */ new WeakMap(), p(st, rt, (e) => {
   let t = l._INTEGER(e), s = l.getValue(l._R_NaInt, "i32");
   return (n, o) => {
     l.setValue(t + 4 * o, n === null ? s : Math.round(Number(n)), "i32");
   };
 });
-var St;
-var xr = class extends ee {
+var Gt = st;
+var nt;
+var ot = class ot2 extends Q {
   constructor(e) {
-    super(e, "double", a(xr, St));
+    super(e, "double", i(ot2, nt));
   }
   getNumber(e) {
     return this.get(e).toArray()[0];
   }
   toNumber() {
-    if (this.length !== 1)
-      throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
+    if (this.length !== 1) throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
     let e = this.getNumber(1);
-    if (e === null)
-      throw new Error("Can't convert missing value `NA` to a JS number");
+    if (e === null) throw new Error("Can't convert missing value `NA` to a JS number");
     return e;
   }
   toTypedArray() {
     return new Float64Array(l.HEAPF64.subarray(l._REAL(this.ptr) / 8, l._REAL(this.ptr) / 8 + this.length));
   }
 };
-var ye = xr;
-St = /* @__PURE__ */ new WeakMap(), u(ye, St, (e) => {
+nt = /* @__PURE__ */ new WeakMap(), p(ot, nt, (e) => {
   let t = l._REAL(e), s = l.getValue(l._R_NaReal, "double");
   return (n, o) => {
     l.setValue(t + 8 * o, n === null ? s : n, "double");
   };
 });
-var Mt;
-var vr = class extends ee {
+var We = ot;
+var at;
+var it = class it2 extends Q {
   constructor(e) {
-    super(e, "complex", a(vr, Mt));
+    super(e, "complex", i(it2, at));
   }
   getComplex(e) {
     return this.get(e).toArray()[0];
   }
   toComplex() {
-    if (this.length !== 1)
-      throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
+    if (this.length !== 1) throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
     let e = this.getComplex(1);
-    if (e === null)
-      throw new Error("Can't convert missing value `NA` to a JS object");
+    if (e === null) throw new Error("Can't convert missing value `NA` to a JS object");
     return e;
   }
   toTypedArray() {
@@ -1815,233 +1654,171 @@ var vr = class extends ee {
     return this.detectMissing().map((t, s) => t ? null : { re: e[2 * s], im: e[2 * s + 1] });
   }
 };
-var Be = vr;
-Mt = /* @__PURE__ */ new WeakMap(), u(Be, Mt, (e) => {
+at = /* @__PURE__ */ new WeakMap(), p(it, at, (e) => {
   let t = l._COMPLEX(e), s = l.getValue(l._R_NaReal, "double");
   return (n, o) => {
     l.setValue(t + 8 * (2 * o), n === null ? s : n.re, "double"), l.setValue(t + 8 * (2 * o + 1), n === null ? s : n.im, "double");
   };
 });
-var Dt;
-var Er = class extends ee {
+var Ke = it;
+var lt;
+var ct = class ct2 extends Q {
   constructor(e) {
-    super(e, "character", a(Er, Dt));
+    super(e, "character", i(ct2, lt));
   }
   getString(e) {
     return this.get(e).toArray()[0];
   }
   toString() {
-    if (this.length !== 1)
-      throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
+    if (this.length !== 1) throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
     let e = this.getString(1);
-    if (e === null)
-      throw new Error("Can't convert missing value `NA` to a JS string");
+    if (e === null) throw new Error("Can't convert missing value `NA` to a JS string");
     return e;
   }
   toTypedArray() {
     return new Uint32Array(l.HEAPU32.subarray(l._STRING_PTR(this.ptr) / 4, l._STRING_PTR(this.ptr) / 4 + this.length));
   }
   toArray() {
-    return this.detectMissing().map((e, t) => e ? null : l.UTF8ToString(l._R_CHAR(l._STRING_ELT(this.ptr, t))));
+    let e = l._vmaxget();
+    try {
+      return this.detectMissing().map((t, s) => t ? null : l.UTF8ToString(l._Rf_translateCharUTF8(l._STRING_ELT(this.ptr, s))));
+    } finally {
+      l._vmaxset(e);
+    }
   }
 };
-var L = Er;
-Dt = /* @__PURE__ */ new WeakMap(), u(L, Dt, (e) => (t, s) => {
-  t === null ? l._SET_STRING_ELT(e, s, M.naString.ptr) : l._SET_STRING_ELT(e, s, new qe(t).ptr);
+lt = /* @__PURE__ */ new WeakMap(), p(ct, lt, (e) => (t, s) => {
+  t === null ? l._SET_STRING_ELT(e, s, S.naString.ptr) : l._SET_STRING_ELT(e, s, new Me(t).ptr);
 });
-var kt;
-var Tr = class extends ee {
+var z = ct;
+var ut;
+var pt = class pt2 extends Q {
   constructor(e) {
-    e instanceof ArrayBuffer && (e = new Uint8Array(e)), super(e, "raw", a(Tr, kt));
+    e instanceof ArrayBuffer && (e = new Uint8Array(e)), super(e, "raw", i(pt2, ut));
   }
   getNumber(e) {
     return this.get(e).toArray()[0];
   }
   toNumber() {
-    if (this.length !== 1)
-      throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
+    if (this.length !== 1) throw new Error("Can't convert atomic vector of length > 1 to a scalar JS value");
     let e = this.getNumber(1);
-    if (e === null)
-      throw new Error("Can't convert missing value `NA` to a JS number");
+    if (e === null) throw new Error("Can't convert missing value `NA` to a JS number");
     return e;
   }
   toTypedArray() {
     return new Uint8Array(l.HEAPU8.subarray(l._RAW(this.ptr), l._RAW(this.ptr) + this.length));
   }
 };
-var Le = Tr;
-kt = /* @__PURE__ */ new WeakMap(), u(Le, kt, (e) => {
+ut = /* @__PURE__ */ new WeakMap(), p(pt, ut, (e) => {
   let t = l._RAW(e);
   return (s, n) => {
     l.setValue(t + n, Number(s), "i8");
   };
 });
-function Re(r) {
-  return Rr(r) ? r : Array.isArray(r) || ArrayBuffer.isView(r) ? { names: null, values: r } : r && typeof r == "object" && !Ue(r) ? { names: Object.keys(r), values: Object.values(r) } : { names: null, values: [r] };
+var Qe = pt;
+function ue(r5) {
+  return we(r5) ? r5 : Array.isArray(r5) || ArrayBuffer.isView(r5) ? { names: null, values: r5 } : r5 && typeof r5 == "object" && !te(r5) ? { names: Object.keys(r5), values: Object.values(r5) } : { names: null, values: [r5] };
 }
-function os(r) {
-  let e = { object: y, null: Et, symbol: I, pairlist: ae, closure: he, environment: Ne, call: F, special: he, builtin: he, string: qe, logical: Z, integer: vt, double: ye, complex: Be, character: L, list: Fe, raw: Le, function: he, dataframe: Y };
-  return r in e ? e[r] : y;
+function _r(r5) {
+  let e = { object: h, null: Te, symbol: C, pairlist: Se, closure: le, environment: ve, call: K, special: le, builtin: le, string: Me, logical: se, integer: Gt, double: We, complex: Ke, character: z, list: _e, raw: Qe, function: le, dataframe: ke };
+  return r5 in e ? e[r5] : h;
 }
-function Tt(r) {
-  return r instanceof y;
+function Ye(r5) {
+  return r5 instanceof h;
 }
-function as(r) {
+function kr(r5) {
   let e = ["logical", "integer", "double", "complex", "character"];
-  return Tt(r) && e.includes(r.type()) || Tt(r) && r.isNa();
+  return Ye(r5) && e.includes(r5.type()) || Ye(r5) && r5.isNa();
 }
-function is(r) {
-  return r === null || typeof r == "number" || typeof r == "boolean" || typeof r == "string" || Ue(r);
+function Mr(r5) {
+  return r5 === null || typeof r5 == "number" || typeof r5 == "boolean" || typeof r5 == "string" || te(r5);
 }
-var M;
-var Os = ne(Ht());
-var so = new TextEncoder();
-var z;
-var X;
-var Ge;
-var Vr;
-z = /* @__PURE__ */ new WeakMap(), X = /* @__PURE__ */ new WeakMap(), Ge = /* @__PURE__ */ new WeakSet(), Vr = function() {
-  a(this, z).push(new Promise((e) => {
-    a(this, X).push(e);
+var S;
+function Wr(r5) {
+  return typeof r5 == "object" && r5 !== null && !Array.isArray(r5) && !ArrayBuffer.isView(r5) && !te(r5) && !we(r5) && !(r5 instanceof Date) && !(r5 instanceof RegExp) && !(r5 instanceof Error) && !(r5 instanceof w) && Object.getPrototypeOf(r5) === Object.prototype;
+}
+var rs = be(Zr());
+var gn = new TextEncoder();
+var q;
+var V;
+var Ue;
+var yr;
+q = /* @__PURE__ */ new WeakMap(), V = /* @__PURE__ */ new WeakMap(), Ue = /* @__PURE__ */ new WeakSet(), yr = function() {
+  i(this, q).push(new Promise((e) => {
+    i(this, V).push(e);
   }));
 };
-function $e(r, e, t) {
-  return As({ type: "response", data: { uuid: r, resp: e } }, t);
-}
-function As(r, e) {
-  return e && ss(r, e), r;
-}
-var Te;
-Te = /* @__PURE__ */ new WeakMap();
-var js = ne(Ht());
-var io = new TextDecoder("utf-8");
-var Pe;
-var _e;
-var Ke;
-var Qe;
-var Se;
-Pe = /* @__PURE__ */ new WeakMap(), _e = /* @__PURE__ */ new WeakMap(), Ke = /* @__PURE__ */ new WeakMap(), Qe = /* @__PURE__ */ new WeakMap(), Se = /* @__PURE__ */ new WeakMap();
-var Hr = new Int32Array(new ArrayBuffer(4));
-m && (globalThis.Worker = N("worker_threads").Worker);
-var Me;
-var Qt;
-var Fs;
-var Ye;
-Me = /* @__PURE__ */ new WeakMap(), Qt = /* @__PURE__ */ new WeakSet(), Fs = function(t) {
-  m ? t.on("message", (s) => {
-    a(this, Ye).call(this, t, s);
-  }) : t.onmessage = (s) => a(this, Ye).call(this, t, s.data);
-}, Ye = /* @__PURE__ */ new WeakMap();
-var ce;
-var et;
-var ue;
-var tt;
-ce = /* @__PURE__ */ new WeakMap(), et = /* @__PURE__ */ new WeakMap(), ue = /* @__PURE__ */ new WeakMap(), tt = /* @__PURE__ */ new WeakMap();
-var rr = ne(Ht());
-m && (globalThis.Worker = N("worker_threads").Worker);
-var De;
-var pe;
-var ke;
-var Yt;
-var qs;
-var er;
-var Vs;
-var tr;
-var Js;
-var rt;
-De = /* @__PURE__ */ new WeakMap(), pe = /* @__PURE__ */ new WeakMap(), ke = /* @__PURE__ */ new WeakMap(), Yt = /* @__PURE__ */ new WeakSet(), qs = async function(t) {
-  d(this, pe, await navigator.serviceWorker.register(t)), await navigator.serviceWorker.ready, window.addEventListener("beforeunload", () => {
-    var n;
-    (n = a(this, pe)) == null || n.unregister();
-  });
-  let s = await new Promise((n) => {
-    navigator.serviceWorker.addEventListener("message", function o(i) {
-      i.data.type === "registration-successful" && (navigator.serviceWorker.removeEventListener("message", o), n(i.data.clientId));
-    }), this.activeRegistration().postMessage({ type: "register-client-main" });
-  });
-  return navigator.serviceWorker.addEventListener("message", (n) => {
-    E(this, er, Vs).call(this, n);
-  }), s;
-}, er = /* @__PURE__ */ new WeakSet(), Vs = async function(t) {
-  if (t.data.type === "request") {
-    let s = t.data.data, n = a(this, De).get(s);
-    if (!n)
-      throw new P("Request not found during service worker XHR request");
-    switch (a(this, De).delete(s), n.type) {
-      case "read": {
-        let o = await this.inputQueue.get();
-        this.activeRegistration().postMessage({ type: "wasm-webr-fetch-response", uuid: s, response: $e(s, o) });
-        break;
-      }
-      case "interrupt": {
-        let o = a(this, ke);
-        this.activeRegistration().postMessage({ type: "wasm-webr-fetch-response", uuid: s, response: $e(s, o) }), this.inputQueue.reset(), d(this, ke, false);
-        break;
-      }
-      default:
-        throw new P(`Unsupported request type '${n.type}'.`);
-    }
-    return;
+var fe;
+var Ne;
+fe = /* @__PURE__ */ new WeakMap(), Ne = /* @__PURE__ */ new WeakMap();
+var ha = new TextDecoder("utf-8");
+var ya = new Int32Array(new ArrayBuffer(4));
+var ae;
+ae = /* @__PURE__ */ new WeakMap();
+E && (globalThis.CloseEvent = class extends Event {
+  constructor(e, t = {}) {
+    super(e, t), this.wasClean = t.wasClean || false, this.code = t.code || 0, this.reason = t.reason || "";
   }
-}, tr = /* @__PURE__ */ new WeakSet(), Js = function(t) {
-  m ? t.on("message", (s) => {
-    a(this, rt).call(this, t, s);
-  }) : t.onmessage = (s) => a(this, rt).call(this, t, s.data);
-}, rt = /* @__PURE__ */ new WeakMap();
-var Oe;
-var st;
-var nt;
-var ot;
-var at;
-var it;
-Oe = /* @__PURE__ */ new WeakMap(), st = /* @__PURE__ */ new WeakMap(), nt = /* @__PURE__ */ new WeakMap(), ot = /* @__PURE__ */ new WeakMap(), at = /* @__PURE__ */ new WeakMap(), it = /* @__PURE__ */ new WeakMap();
-m && (globalThis.Worker = N("worker_threads").Worker);
-var We;
-var sr;
-var Hs;
-var ct;
-We = /* @__PURE__ */ new WeakMap(), sr = /* @__PURE__ */ new WeakSet(), Hs = function(t) {
-  m ? t.on("message", (s) => {
-    a(this, ct).call(this, t, s);
-  }) : t.onmessage = (s) => a(this, ct).call(this, t, s.data);
-}, ct = /* @__PURE__ */ new WeakMap();
-var Ae;
-var Ie;
-var ut;
-var de;
-var nr;
-Ae = /* @__PURE__ */ new WeakMap(), Ie = /* @__PURE__ */ new WeakMap(), ut = /* @__PURE__ */ new WeakMap(), de = /* @__PURE__ */ new WeakMap(), nr = /* @__PURE__ */ new WeakMap();
-var W = { Automatic: 0, SharedArrayBuffer: 1, ServiceWorker: 2, PostMessage: 3 };
-var Xs = m ? __dirname + "/" : "https://webr.r-wasm.org/v0.4.0/";
-var Gs = "https://repo.r-wasm.org";
-var $r = "0.4.0";
-var pt;
-var dt;
-var ht;
-var yt;
-var ft;
-var or;
-var ar;
-var ir;
-var lr;
-var cr;
-var ur;
-var Qs;
-pt = /* @__PURE__ */ new WeakMap(), dt = /* @__PURE__ */ new WeakMap(), ht = /* @__PURE__ */ new WeakMap(), yt = /* @__PURE__ */ new WeakMap(), ft = /* @__PURE__ */ new WeakMap(), or = /* @__PURE__ */ new WeakMap(), ar = /* @__PURE__ */ new WeakMap(), ir = /* @__PURE__ */ new WeakMap(), lr = /* @__PURE__ */ new WeakMap(), cr = /* @__PURE__ */ new WeakMap(), ur = /* @__PURE__ */ new WeakSet(), Qs = async function() {
+});
+E && (globalThis.Worker = ee("worker_threads").Worker);
+var Re;
+var Dt;
+var as;
+var Be;
+Re = /* @__PURE__ */ new WeakMap(), Dt = /* @__PURE__ */ new WeakSet(), as = function(t) {
+  E ? (t.on("message", (s) => {
+    i(this, Be).call(this, t, s);
+  }), t.on("error", (s) => {
+    console.error(s), this.reject(new A("An error occurred initialising the webR SharedBufferChannel worker."));
+  })) : (t.onmessage = (s) => i(this, Be).call(this, t, s.data), t.onerror = (s) => {
+    console.error(s), this.reject(new A("An error occurred initialising the webR SharedBufferChannel worker."));
+  });
+}, Be = /* @__PURE__ */ new WeakMap();
+E && (globalThis.Worker = ee("worker_threads").Worker);
+var ge;
+var At;
+var is;
+var Fe;
+ge = /* @__PURE__ */ new WeakMap(), At = /* @__PURE__ */ new WeakSet(), is = function(t) {
+  E ? (t.on("message", (s) => {
+    i(this, Fe).call(this, t, s);
+  }), t.on("error", (s) => {
+    console.error(s), this.reject(new A("An error occurred initialising the webR PostMessageChannel worker."));
+  })) : (t.onmessage = (s) => i(this, Fe).call(this, t, s.data), t.onerror = (s) => {
+    console.error(s), this.reject(new A("An error occurred initialising the webR PostMessageChannel worker."));
+  });
+}, Fe = /* @__PURE__ */ new WeakMap();
+var J = { Automatic: 0, SharedArrayBuffer: 1, PostMessage: 3 };
+var cs = E ? __dirname + "/" : "https://webr.r-wasm.org/v0.5.5/";
+var us = "https://repo.r-wasm.org";
+var mr = "0.5.5";
+var qe;
+var Ve;
+var Je;
+var He;
+var ze;
+var Ot;
+var Ct;
+var It;
+var Ut;
+var Nt;
+var jt;
+var hs;
+qe = /* @__PURE__ */ new WeakMap(), Ve = /* @__PURE__ */ new WeakMap(), Je = /* @__PURE__ */ new WeakMap(), He = /* @__PURE__ */ new WeakMap(), ze = /* @__PURE__ */ new WeakMap(), Ot = /* @__PURE__ */ new WeakMap(), Ct = /* @__PURE__ */ new WeakMap(), It = /* @__PURE__ */ new WeakMap(), Ut = /* @__PURE__ */ new WeakMap(), Nt = /* @__PURE__ */ new WeakMap(), jt = /* @__PURE__ */ new WeakSet(), hs = async function() {
   for (; ; ) {
     let e = await this.webR.read();
     switch (e.type) {
       case "stdout":
-        a(this, pt).call(this, e.data);
+        i(this, qe).call(this, e.data);
         break;
       case "stderr":
-        a(this, dt).call(this, e.data);
+        i(this, Ve).call(this, e.data);
         break;
       case "prompt":
-        a(this, ht).call(this, e.data);
+        i(this, Je).call(this, e.data);
         break;
       case "canvas":
-        e.data.event === "canvasImage" ? a(this, yt).call(this, e.data.image) : e.data.event === "canvasNewPage" && a(this, ft).call(this);
+        e.data.event === "canvasImage" ? i(this, He).call(this, e.data.image) : e.data.event === "canvasNewPage" && i(this, ze).call(this);
         break;
       case "closed":
         return;
@@ -2050,21 +1827,37 @@ pt = /* @__PURE__ */ new WeakMap(), dt = /* @__PURE__ */ new WeakMap(), ht = /* 
     }
   }
 };
-var ho = { FONTCONFIG_PATH: "/etc/fonts", R_HOME: "/usr/lib/R", R_ENABLE_JIT: "0", WEBR: "1", WEBR_VERSION: $r };
-var Zs = { RArgs: [], REnv: ho, baseUrl: Xs, serviceWorkerUrl: "", repoUrl: Gs, homedir: "/home/web_user", interactive: true, channelType: W.Automatic, createLazyFilesystem: true };
-var R;
-var Rt;
-var hr;
-var Ys;
-R = /* @__PURE__ */ new WeakMap(), Rt = /* @__PURE__ */ new WeakMap(), hr = /* @__PURE__ */ new WeakSet(), Ys = async function() {
+var Pn = { FONTCONFIG_PATH: "/etc/fonts", R_HOME: "/usr/lib/R", R_ENABLE_JIT: "0", ALL_PROXY: "socks5h://localhost:8580", WEBR: "1", WEBR_VERSION: mr };
+var ys = { RArgs: [], REnv: Pn, baseUrl: cs, serviceWorkerUrl: "", repoUrl: us, homedir: "/home/web_user", interactive: true, channelType: J.Automatic, createLazyFilesystem: true };
+var y;
+var ie;
+var Ge;
+var Ft;
+var fs;
+y = /* @__PURE__ */ new WeakMap(), ie = /* @__PURE__ */ new WeakMap(), Ge = /* @__PURE__ */ new WeakMap(), Ft = /* @__PURE__ */ new WeakSet(), fs = async function() {
   for (; ; ) {
-    let e = await a(this, R).readSystem();
+    let e = await i(this, y).readSystem();
     switch (e.type) {
       case "setTimeoutWasm":
         setTimeout((t, s) => {
           this.invokeWasmFunction(t, ...s);
         }, e.data.delay, e.data.ptr, e.data.args);
         break;
+      case "proxyWebSocket": {
+        let t = e;
+        i(this, ie).new(t.data.uuid, t.data.url, t.data.protocol);
+        break;
+      }
+      case "sendWebSocket": {
+        let t = e;
+        i(this, ie).send(t.data.uuid, t.data.data);
+        break;
+      }
+      case "closeWebSocket": {
+        let t = e;
+        i(this, ie).close(t.data.uuid, t.data.code, t.data.reason);
+        break;
+      }
       case "console.log":
         console.log(e.data);
         break;
@@ -2074,15 +1867,18 @@ R = /* @__PURE__ */ new WeakMap(), Rt = /* @__PURE__ */ new WeakMap(), hr = /* @
       case "console.error":
         console.error(e.data);
         break;
+      case "close":
+        i(this, y).close();
+        break;
       default:
-        throw new A("Unknown system message type `" + e.type + "`");
+        throw new D("Unknown system message type `" + e.type + "`");
     }
   }
 };
-var g;
+var R;
 var f;
-var mt;
-g = /* @__PURE__ */ new WeakMap(), f = /* @__PURE__ */ new WeakMap(), mt = /* @__PURE__ */ new WeakMap();
+var $e;
+R = /* @__PURE__ */ new WeakMap(), f = /* @__PURE__ */ new WeakMap(), $e = /* @__PURE__ */ new WeakMap();
 
 // src/messageporthttp.ts
 async function fetchASGI(client, resource, init, filter = (bodyChunk) => bodyChunk) {
@@ -2186,12 +1982,21 @@ function asgiToRes(res, body) {
 // src/shinylive-sw.ts
 var useCaching = false;
 var cacheName = "::shinyliveServiceworker";
-var version = "v8";
+var version = "v10";
 function addCoiHeaders(resp) {
   const headers = new Headers(resp.headers);
-  headers.set("Cross-Origin-Embedder-Policy", "credentialless");
+  headers.set("Cross-Origin-Embedder-Policy", "require-corp");
   headers.set("Cross-Origin-Resource-Policy", "cross-origin");
   headers.set("Cross-Origin-Opener-Policy", "same-origin");
+  return new Response(resp.body, {
+    status: resp.status,
+    statusText: resp.statusText,
+    headers
+  });
+}
+function addCorpHeader(resp) {
+  const headers = new Headers(resp.headers);
+  headers.set("Cross-Origin-Resource-Policy", "cross-origin");
   return new Response(resp.body, {
     status: resp.status,
     statusText: resp.statusText,
@@ -2221,10 +2026,8 @@ self.addEventListener("activate", function(event) {
 self.addEventListener("fetch", function(event) {
   const request = event.request;
   const url = new URL(request.url);
-  if (self.location.origin !== url.origin)
-    return;
-  if (url.pathname == "/esbuild")
-    return;
+  if (self.location.origin !== url.origin) return;
+  if (url.pathname == "/esbuild") return;
   const base_path = dirname(self.location.pathname);
   if (url.pathname == `${base_path}/shinylive-inject-socket.js`) {
     event.respondWith(
@@ -2274,7 +2077,7 @@ self.addEventListener("fetch", function(event) {
           filter
         );
         if (coiRequested) {
-          return addCoiHeaders(resp);
+          return addCorpHeader(resp);
         } else {
           return resp;
         }
