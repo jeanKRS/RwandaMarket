@@ -5,3 +5,5 @@
 
 /.quarto/
 shinylive-export.R
+__pycache__/
+.pytest_cache/
